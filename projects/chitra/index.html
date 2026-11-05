@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chitra House - et hus der historier, kultur og feiring møtes.">
+    <title>Chitra House</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/scss/pages/global.css">
+    <link rel="stylesheet" href="static/scss/pages/pages.css">
+    <link rel="stylesheet" href="static/scss/store/nav.css">
+    <link rel="stylesheet" href="static/scss/store/footer.css">
+    <script src="https://kit.fontawesome.com/5153798d69.js" crossorigin="anonymous" defer></script>
+    <script src="static/js/nav.js" defer></script>
+    <script src="static/js/home.js" defer></script>
+    <script src="static/js/footer.js" defer></script>
+</head>
+<body id="top" class="home">
+    <header>
+        <div id="mobileNav">
+            <div class="hamburger" id="hamburger" onclick="menu()"><span></span><span></span><span></span></div>
+            <a href="index.html" class="logo"><img src="static/images/logo/ChitraLogo.webp" alt="Chitra"></a>
+            <div id="sidebar">
+                <div class="sidebar-links">
+                    <a href="#about" class="sidebar-link">Om oss</a>
+                    <span class="sidebar-eyebrow">Arrangementer</span>
+                    <a href="#story" class="sidebar-link">Historien</a>
+                    <a href="#gallery" class="sidebar-link">Galleri</a>
+                    <a href="#booking-note" class="sidebar-link">Booking</a>
+                </div>
+            </div>
+        </div>
+        <div id="desNav">
+            <div class="content">
+                <a href="index.html" class="logo"><img src="static/images/logo/ChitraLogo.webp" alt="Chitra"></a>
+                <nav class="links" aria-label="Hovedmeny">
+                    <a href="#about">Om oss</a>
+                    <a href="#story">Historien</a>
+                    <a href="#gallery">Galleri</a>
+                </nav>
+                <div class="nav-actions"><a href="#booking-note" class="button">Booking</a></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="photo-backdrop" data-nav-theme="dark">
+            <div class="photo-layer" data-layer="cover">
+                <div class="overlay-top"></div>
+                <img src="static/images/Homepage/Fasade_08-web.jpg" alt="Fasaden på Chitra House" fetchpriority="high">
+                <div class="overlay-bottom"></div>
+                <div class="content">
+                    <div class="text">
+                        <h1>Et hus der historier,<br>kultur og feiring møtes</h1>
+                        <img class="hero-divider" src="static/images/Guilloche.png" alt="">
+                        <a href="#booking-note" class="button">Book arrangement <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+                    </div>
+                    <a href="#hva-du-kan-forvente" class="scroll-indicator" aria-label="Scroll ned"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="photo-layer" data-layer="intro">
+                <div class="overlay-top"></div>
+                <img src="static/images/Homepage/1.etg - peis-web.jpg" alt="Peisestue i 1. etasje på Chitra House" loading="lazy">
+                <div class="overlay-bottom"></div>
+                <div class="content"><h2>Der indisk kulturarv<br>møter skandinavisk skjønnhet</h2><img class="hero-divider" src="static/images/Guilloche.png" alt=""><a href="#about" class="button">Om oss <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></div>
+            </div>
+            <div class="photo-layer" data-layer="legacy">
+                <div class="overlay-top"></div>
+                <img src="static/images/Homepage/Stue - 1.etg-web.jpg" alt="Stue i 1. etasje på Chitra House" loading="lazy">
+                <div class="overlay-bottom"></div>
+                <div class="content"><h2>Der teens historie møter<br>kunst, kultur og tradisjon</h2><img class="hero-divider" src="static/images/Guilloche.png" alt=""><a href="#gallery" class="button">Se galleriet <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></div>
+            </div>
+        </div>
+
+        <div class="scroll-track">
+            <div class="scroll-anchor" data-layer="cover"></div>
+            <div class="scroll-anchor" data-layer="intro" id="hva-du-kan-forvente"></div>
+            <div class="scroll-anchor" data-layer="legacy"></div>
+        </div>
+
+        <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+            <clipPath id="story-wave-clip" clipPathUnits="objectBoundingBox"><path d="M 0.35,0 C 0.31,0.08 0.27,0.17 0.27,0.25 C 0.27,0.33 0.31,0.42 0.35,0.5 C 0.39,0.58 0.43,0.67 0.43,0.75 C 0.43,0.83 0.39,0.92 0.35,1 L 1,1 L 1,0 Z"></path></clipPath>
+            <clipPath id="foundation-arch-clip" clipPathUnits="objectBoundingBox"><path d="M 0.5,0.0067 C 0.7709,0.0067 0.9904,0.1606 0.9904,0.3503 L 0.9904,0.9933 L 0.0096,0.9933 L 0.0096,0.3503 C 0.0096,0.1606 0.2292,0.0067 0.5,0.0067 Z"></path></clipPath>
+        </svg>
+
+        <section class="story" id="story" data-nav-theme="dark">
+            <div class="content">
+                <div class="story-panel" id="about">
+                    <h2>Et hus med en historie</h2>
+                    <img class="hero-divider" src="static/images/Guilloche.png" alt="">
+                    <p>Chitra House er mer enn et sted. Oppdag historien, menneskene og inspirasjonen som har formet huset til det det er i dag.</p>
+                    <a href="#gallery" class="button">Utforsk huset <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="story-photo"><img src="static/images/Homepage/Fasade_28.jpg" alt="Fasaden på Chitra House" loading="lazy"></div>
+            </div>
+        </section>
+
+        <section class="cta" data-nav-theme="dark">
+            <div class="overlay-top"></div><img src="static/images/Homepage/1.etg - konferanse.jpg" alt="Konferanserom i 1. etasje på Chitra House" loading="lazy"><div class="overlay-bottom"></div>
+            <div class="content"><h2>Din anledning. Ditt Chitra.</h2><p>Fortell oss hva du planlegger, så skaper vi rammene rundt en minnerik opplevelse.</p><a href="#booking-note" class="button">Book et arrangement <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></div>
+        </section>
+
+        <section class="foundation" data-nav-theme="dark">
+            <img class="foundation-squiggle" src="static/images/squiggleMerEnEtHUs.png" alt="" aria-hidden="true" loading="lazy">
+            <div class="foundation-panel"><h2>Mer enn et hus</h2><img class="hero-divider" src="static/images/Guilloche.png" alt=""><p>Når du besøker Chitra House, er du med på å bidra til noe større. Inntektene fra Chitra House går til N. Sethia Foundation og deres veldedige arbeid.</p><a href="https://nsethiafoundation.com/the-trust/" class="button">Oppdag N. Sethia Foundation <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></div>
+            <div class="foundation-photo"><img src="static/images/Homepage/Chitra.png" alt="Portrettmaleri av Chitra" loading="lazy"></div>
+        </section>
+
+        <section class="glimpse" id="gallery" data-nav-theme="dark">
+            <h2>Et glimt av Chitra</h2>
+            <div class="glimpse-inner">
+                <div class="glimpse-gallery"><div class="glimpse-track" data-slides="8">
+                    <img src="static/images/Homepage/glimpse/Fasade_Arch.png" alt="Fasaden på Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Lysekrone_Arch.png" alt="Lysekrone i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Outside_Arch.png" alt="Utenfor Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Couch_Arch.png" alt="Sittegruppe i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Konferanseblue_Arch.png" alt="Konferanserom i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Konfrense_Arch.png" alt="Konferanserom i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Stairs_Arch.png" alt="Trapp i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Tea_Arch.png" alt="Teservering i Chitra House" loading="lazy">
+                    <img src="static/images/Homepage/glimpse/Fasade_Arch.png" alt="Fasaden på Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Lysekrone_Arch.png" alt="Lysekrone i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Outside_Arch.png" alt="Utenfor Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Couch_Arch.png" alt="Sittegruppe i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Konferanseblue_Arch.png" alt="Konferanserom i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Konfrense_Arch.png" alt="Konferanserom i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Stairs_Arch.png" alt="Trapp i Chitra House" loading="lazy"><img src="static/images/Homepage/glimpse/Tea_Arch.png" alt="Teservering i Chitra House" loading="lazy">
+                </div></div>
+                <a href="#gallery" class="button button--cream">Galleri <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+        <section class="showcase" data-nav-theme="dark"><div class="showcase-grid"><div class="showcase-main"><img src="static/images/Homepage/showcase/1.etg-sofa.jpg" alt="Sittegruppe i Chitra House" loading="lazy"></div><div class="showcase-secondary"><img src="static/images/Homepage/showcase/Showroom_04.jpg" alt="Teutvalg i Chitra House" loading="lazy"><img src="static/images/Homepage/showcase/Lysekrone_detalj.jpg" alt="Detalj av lysekrone i Chitra House" loading="lazy"></div></div></section>
+
+        <section class="stairs"><div class="stairs-photo" data-nav-theme="dark"><img src="static/images/Homepage/Ball_stairs.png" alt="Trapp i Chitra House" loading="lazy"><div class="stairs-fade"></div></div><div class="stairs-content" data-nav-theme="light"><img class="stairs-squiggle" src="static/images/SquiggleMøteMellom.png" alt="" aria-hidden="true" loading="lazy"><div class="stairs-photo-small"><img src="static/images/Homepage/Upstair_entrance.png" alt="Inngangsparti i Chitra House" loading="lazy"></div><div class="stairs-text"><h2>Møtet mellom India<br>og Skandinavia</h2><img class="hero-divider" src="static/images/Guilloche.png" alt=""><p>Chitra House kombinerer indisk og skandinavisk-inspirert interiør. Første etasje er inspirert av indisk stil og tradisjon, mens andre etasje er preget av skandinaviske designuttrykk.</p></div></div></section>
+
+        <section class="meeting" data-nav-theme="dark"><div class="overlay-top"></div><img src="static/images/Homepage/2.etg - styrerom.jpg" alt="Styrerom i 2. etasje på Chitra House" loading="lazy"><div class="overlay-bottom"></div><div class="content"><h2>Møter i skandinaviske omgivelser</h2><p>Andre etasje byr på lyse, elegante rom inspirert av skandinavisk design - perfekte for møter, konferanser og mindre arrangementer.</p><a href="#gallery" class="button">Møterom <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></div></section>
+
+        <section class="tea" data-nav-theme="light"><img class="tea-logo" src="static/images/logo/ChitraLogo.webp" alt="" loading="lazy"><div class="tea-row"><div class="tea-text"><h2>Afternoon Tea på<br>Chitra House</h2><img class="hero-divider" src="static/images/Guilloche.png" alt=""><p>Opplev en elegant Afternoon Tea i unike omgivelser ved Oslofjorden. På Chitra House møtes britisk tekultur, indisk arv og skandinavisk eleganse i en stemningsfull opplevelse.</p><a href="#gallery" class="button">Afternoon tea <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></div><div class="tea-photo"><img src="static/images/Homepage/Tea.jpg" alt="Afternoon tea på Chitra House" loading="lazy"></div></div></section>
+
+        <section class="cta" id="booking-note" data-nav-theme="dark">
+            <div class="overlay-top"></div>
+            <img src="static/images/Homepage/Fasade_28.jpg" alt="Chitra House i kveld" loading="lazy">
+            <div class="overlay-bottom"></div>
+            <div class="content"><h2>Booking er en del av<br>portfolio-demoen.</h2><p>Dette er en statisk presentasjon, så skjemaet sender ingen data.</p><a href="#top" class="button">Til toppen <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer-contact" data-nav-theme="light">
+            <div class="site-footer-contact-inner">
+                <div class="contact-heading"><h3>Chitra House</h3><img class="contact-divider" src="static/images/Guilloche.png" alt=""></div>
+                <div class="contact-info"><p class="contact-address">Snarøyveien 34, 1364 Fornebu, Norway</p><p class="contact-role">Portfolio concept by Marie Klausen</p></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

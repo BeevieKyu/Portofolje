@@ -339,9 +339,10 @@ h2 em {
   font-weight: 600;
 }
 
-.art-northstar {
-  background: #e3e1d7;
-  color: #242a22;
+.art-chitra {
+  background: url("../projects/chitra/static/images/Fasade_08.jpg") center/cover;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 
 .art-signal {
