@@ -1,0 +1,44 @@
+{% load static %}
+{% load cache_bust %}
+
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  {% block head %}
+  {% endblock %}
+
+  <base href="/">
+
+  <link rel="preconnect" href="https://site-assets.fontawesome.com" crossorigin>
+  <link rel="dns-prefetch" href="https://site-assets.fontawesome.com">
+  <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+        <script src="https://kit.fontawesome.com/5153798d69.js" crossorigin="anonymous" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static_versioned 'scss/pages/global.css' %}" type="text/css">
+  <script src="{% static_versioned 'js/nav.js' %}" defer></script>
+
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+  <header>
+    {% include 'core/nav.html' %}
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    {% include 'core/footer.html' %}
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Innstillinger{% endblock %}
+{% block page_title %}Innstillinger{% endblock %}
+
+{% block content %}
+
+<form method="post" class="dash-form dash-panel">
+    {% csrf_token %}
+
+    <h2 class="dash-form-section-title">Forside</h2>
+    <div class="dash-field{% if form.hero_title.errors %} has-error{% endif %}">
+        <label for="{{ form.hero_title.id_for_label }}">Hovedoverskrift</label>
+        {{ form.hero_title }}
+        {% if form.hero_title.errors %}<span class="dash-field-error">{{ form.hero_title.errors.0 }}</span>{% endif %}
+    </div>
+    <div class="dash-field{% if form.hero_subtitle.errors %} has-error{% endif %}">
+        <label for="{{ form.hero_subtitle.id_for_label }}">Undertekst</label>
+        {{ form.hero_subtitle }}
+        {% if form.hero_subtitle.errors %}<span class="dash-field-error">{{ form.hero_subtitle.errors.0 }}</span>{% endif %}
+    </div>
+
+    <h2 class="dash-form-section-title">Footer</h2>
+    <div class="dash-field{% if form.footer_cta_title.errors %} has-error{% endif %}">
+        <label for="{{ form.footer_cta_title.id_for_label }}">Overskrift</label>
+        {{ form.footer_cta_title }}
+        {% if form.footer_cta_title.errors %}<span class="dash-field-error">{{ form.footer_cta_title.errors.0 }}</span>{% endif %}
+    </div>
+    <div class="dash-field{% if form.footer_cta_text.errors %} has-error{% endif %}">
+        <label for="{{ form.footer_cta_text.id_for_label }}">Tekst</label>
+        {{ form.footer_cta_text }}
+        {% if form.footer_cta_text.errors %}<span class="dash-field-error">{{ form.footer_cta_text.errors.0 }}</span>{% endif %}
+    </div>
+
+    <h2 class="dash-form-section-title">Kontaktinformasjon</h2>
+    <div class="dash-form-grid">
+        <div class="dash-field{% if form.contact_person.errors %} has-error{% endif %}">
+            <label for="{{ form.contact_person.id_for_label }}">Kontaktperson</label>
+            {{ form.contact_person }}
+            {% if form.contact_person.errors %}<span class="dash-field-error">{{ form.contact_person.errors.0 }}</span>{% endif %}
+        </div>
+        <div class="dash-field{% if form.contact_email.errors %} has-error{% endif %}">
+            <label for="{{ form.contact_email.id_for_label }}">E-post</label>
+            {{ form.contact_email }}
+            {% if form.contact_email.errors %}<span class="dash-field-error">{{ form.contact_email.errors.0 }}</span>{% endif %}
+        </div>
+        <div class="dash-field{% if form.contact_phone.errors %} has-error{% endif %}">
+            <label for="{{ form.contact_phone.id_for_label }}">Telefon</label>
+            {{ form.contact_phone }}
+            {% if form.contact_phone.errors %}<span class="dash-field-error">{{ form.contact_phone.errors.0 }}</span>{% endif %}
+        </div>
+        <div class="dash-field{% if form.org_number.errors %} has-error{% endif %}">
+            <label for="{{ form.org_number.id_for_label }}">Org.nr</label>
+            {{ form.org_number }}
+            {% if form.org_number.errors %}<span class="dash-field-error">{{ form.org_number.errors.0 }}</span>{% endif %}
+        </div>
+    </div>
+
+    <div class="dash-form-actions">
+        <button type="submit" class="dash-button dash-button-primary">Lagre innstillinger</button>
+    </div>
+</form>
+
+{% endblock %}

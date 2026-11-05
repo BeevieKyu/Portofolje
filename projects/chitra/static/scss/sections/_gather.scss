@@ -1,0 +1,155 @@
+// "Samlet rundt bordet" — photo group (one tall image + two stacked) beside a
+// cream text panel on the dark (primary) ground. The inner block is pinned
+// (position: sticky) so the .finale ball reveal that follows can grow up over it.
+.gather {
+    position: relative;
+    z-index: 1;
+    // Pinned scroll length. Shorter = the ball reveal that follows starts
+    // sooner after the section is fully in view.
+    height: 250vh;
+    background: var(--primary);
+    color: var(--cream);
+
+    .gather-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        padding: 40px 24px;
+    }
+
+    .gather-squiggle {
+        display: none;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .gather-gallery,
+    .gather-panel {
+        position: relative;
+        z-index: 1;
+    }
+
+    .gather-gallery {
+        display: flex;
+        gap: 14px;
+    }
+
+    .gather-photo--tall {
+        flex: 0 0 52%;
+        display: flex;
+
+        img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    }
+
+    .gather-photo-stack {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    }
+
+    .gather-panel {
+        h2 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .hero-divider {
+            display: block;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.92;
+        }
+
+        .button {
+            margin-top: 24px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .gather {
+        .gather-sticky {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 56px;
+            padding: 0 var(--page-edge);
+        }
+
+        .gather-squiggle {
+            display: block;
+            left: -8%;
+            right: auto;
+            width: 116%;
+            object-position: left center;
+        }
+
+        .gather-gallery {
+            flex: 0 0 auto;
+            width: min(720px, 55%);
+            gap: 16px;
+        }
+
+        .gather-photo-stack {
+            gap: 16px;
+        }
+
+        .gather-panel {
+            max-width: 520px;
+
+            h2 {
+                font-size: 50px;
+                line-height: 1.25;
+                margin-bottom: 26px;
+            }
+
+            .hero-divider {
+                margin-bottom: 28px;
+            }
+
+            p {
+                font-size: 20px;
+                line-height: 1.7;
+                max-width: 440px;
+            }
+
+            .button {
+                margin-top: 28px;
+            }
+        }
+    }
+}

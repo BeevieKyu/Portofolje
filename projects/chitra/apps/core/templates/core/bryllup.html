@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load cache_bust %}
+
+{% block head %}
+<title>Bryllup | Chitra house</title>
+<meta name="description" content="Skap deres drømmebryllup i stemningsfulle og elegante omgivelser på Chitra house.">
+<meta name="author" content="Chitra">
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static_versioned 'scss/pages/pages.css' %}" type="text/css">
+<script src="{% static_versioned 'js/bryllup.js' %}" defer></script>
+
+<section class="video-hero" data-nav-theme="dark">
+    <img class="video-hero-media" src="{% static 'images/Bryllup/bryllup.png' %}" alt="Bryllupsselskap på terrassen ved Chitra house">
+    <div class="video-hero-overlay"></div>
+    <div class="video-hero-content">
+        <h1>Bryllup</h1>
+        <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>Skap deres drømmebryllup i stemningsfulle og elegante omgivelser.</p>
+    </div>
+</section>
+
+<section class="tea" data-nav-theme="dark">
+    <img class="tea-logo" src="{% static 'images/logo/ChitraLogo.webp' %}" alt="" loading="lazy" decoding="async">
+    <div class="tea-row">
+        <div class="tea-text">
+            <h2>Bryllup på<br>Chitra House</h2>
+            <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+            <p>Chitra House byr på elegante lokaler og vakre uteområder som skaper en stemningsfull ramme rundt bryllupsfeiringen.</p>
+            <a href="{% url 'booking' %}" class="button">Book bryllup <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="tea-photo">
+            <img src="{% static 'images/OmOss/patio.webp' %}" alt="Uteservering med parasoller på terrassen ved Chitra House" loading="lazy" decoding="async">
+        </div>
+    </div>
+</section>
+
+<section class="meeting" data-nav-theme="dark">
+    <div class="overlay-top"></div>
+    <img src="{% static 'images/Bryllup/overview.webp' %}" alt="Bryllupsselskap med rød løper og parasoller foran Chitra House sett ovenfra" loading="lazy" decoding="async">
+    <div class="overlay-bottom"></div>
+    <div class="content">
+        <h2>Der minnene skapes</h2>
+        <p>Fra de første gjestene ankommer til dagen går over i kveld, skaper Chitra House en vakker ramme rundt feiringen.</p>
+    </div>
+</section>
+
+<section class="gather" data-nav-theme="dark">
+    <div class="gather-sticky">
+        <img class="gather-squiggle" src="{% static 'images/SquiggleSamlet.png' %}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <div class="gather-gallery">
+            <div class="gather-photo gather-photo--tall">
+                <img src="{% static 'images/Bryllup/detalj.webp' %}" alt="Lysekrone, draperte gardiner og fiskebensparkett i en sal på Chitra House" loading="lazy" decoding="async">
+            </div>
+            <div class="gather-photo-stack">
+                <img src="{% static 'images/Bryllup/blomst1.webp' %}" alt="Blomsteroppsats med syrin og telys langs et festbord" loading="lazy" decoding="async">
+                <img src="{% static 'images/Bryllup/blomst2.webp' %}" alt="Høye vaser med lilla blomster på et speilbord" loading="lazy" decoding="async">
+            </div>
+        </div>
+        <div class="gather-panel">
+            <h2>Samlet rundt bordet</h2>
+            <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+            <p>Bryllup handler også om tiden sammen. Rundt bordet samles familie og venner til gode samtaler og øyeblikk som deles gjennom dagen.</p>
+        </div>
+    </div>
+</section>
+
+<section class="finale">
+    <div class="tribute-reveal" data-nav-theme="dark">
+        <img class="tribute-reveal-fill" src="{% static 'images/Bryllup/reveal.webp' %}" alt="Chitra House sett fra hagen" loading="lazy" decoding="async">
+    </div>
+</section>
+
+<section class="plan" data-nav-theme="light">
+    <img class="plan-flower" src="{% static 'images/FLower.png' %}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <div class="plan-inner">
+        <h2>Planlegger dere bryllup?</h2>
+        <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>Hvert bryllup er forskjellig, og vi ønsker å høre hvordan dere ser for dere deres dag. Fortell oss om planene, ønskene og anledningen, så tar vi kontakt for å finne ut hvordan Chitra House kan passe til feiringen.</p>
+        <a href="{% url 'booking' %}" class="button">Book bryllup <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+</section>
+
+{% endblock %}

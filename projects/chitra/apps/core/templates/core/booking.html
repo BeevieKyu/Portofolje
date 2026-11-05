@@ -1,0 +1,148 @@
+{% load static %}
+{% load cache_bust %}
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book et arrangement | Chitra house</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static_versioned 'scss/pages/global.css' %}">
+  <link rel="stylesheet" href="{% static_versioned 'scss/store/booking.css' %}">
+</head>
+<body>
+  <main class="booking-shell">
+    <div class="booking-card" id="booking-card">
+      <section class="booking-panel">
+        <a class="booking-close" href="/" aria-label="Lukk booking">&times;</a>
+        <div class="booking-confetti" id="booking-confetti" aria-hidden="true"></div>
+
+        <div class="booking-progress" aria-label="Booking steg">
+          <span class="progress-label">Steg <strong id="step-number">1</strong> av 5</span>
+          <div class="progress-dots">
+            <span class="progress-dot is-active"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+          </div>
+        </div>
+
+        <form id="booking-form">
+          <fieldset class="booking-step is-active" data-step="1" data-image="{% static 'images/booking/Fasade_28.jpg' %}" data-image-alt="Fasaden på Chitra house">
+            <legend>Book et arrangement</legend>
+            <img class="booking-guilloche" src="{% static 'images/booking/Guilloche.png' %}" alt="">
+            <p class="step-intro">Hva planlegger du?</p>
+            <p class="step-description">Velg hvilken type arrangement du ønsker å holde på Chitra house.</p>
+            <label for="event-type">Arrangementstype</label>
+            <select id="event-type" name="event_type" required>
+              <option value="">Velg arrangementstype</option>
+              <option value="bryllup">Bryllup</option>
+              <option value="konferanse">Konferanse</option>
+              <option value="mote">Møte</option>
+              <option value="afternoon-tea">Afternoon tea</option>
+              <option value="privat-arrangement">Privat arrangement</option>
+            </select>
+          </fieldset>
+
+          <fieldset class="booking-step" data-step="2" data-image="{% static 'images/booking/Showroom_04.jpg' %}" data-image-alt="Showroom på Chitra house">
+            <legend>Book et arrangement</legend>
+            <img class="booking-guilloche" src="{% static 'images/booking/Guilloche.png' %}" alt="">
+            <p class="step-intro">Når ønsker du å holde arrangementet?</p>
+            <p class="step-description">Velg ønsket dato og tidspunkt.</p>
+            <div class="field-grid">
+              <div class="calendar-field">
+                <label for="calendar-trigger">Dato</label>
+                <button type="button" class="calendar-trigger" id="calendar-trigger" popovertarget="calendar" popovertargetaction="toggle" aria-haspopup="true" aria-expanded="false" aria-controls="calendar">Velg dato</button>
+                <input id="event-date" name="date" type="date" required tabindex="-1" aria-hidden="true">
+                <div class="calendar" id="calendar" aria-label="Velg dato" popover="auto">
+                  <div class="calendar-header">
+                    <strong id="calendar-month"></strong>
+                    <div class="calendar-nav">
+                      <button type="button" class="calendar-nav-button" id="calendar-previous" aria-label="Forrige måned">‹</button>
+                      <button type="button" class="calendar-nav-button" id="calendar-next" aria-label="Neste måned">›</button>
+                    </div>
+                  </div>
+                  <div class="calendar-weekdays" aria-hidden="true"><span>Ma</span><span>Ti</span><span>On</span><span>To</span><span>Fr</span><span>Lø</span><span>Sø</span></div>
+                  <div class="calendar-days" id="calendar-days"></div>
+                </div>
+              </div>
+              <div><label for="event-time">Tidspunkt</label><select id="event-time" name="time" required><option value="">Velg tid</option><option>09:00</option><option>12:00</option><option>15:00</option><option>18:00</option></select></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="booking-step" data-step="3" data-image="{% static 'images/booking/SF.jpg' %}" data-image-alt="SF-rommet på Chitra house">
+            <legend>Book et arrangement</legend>
+            <img class="booking-guilloche" src="{% static 'images/booking/Guilloche.png' %}" alt="">
+            <p class="step-intro">Hvor mange gjester forventer du?</p>
+            <p class="step-description">Gi oss et estimat på hvor mange som skal delta.</p>
+            <label for="guest-count">Antall gjester</label>
+            <input id="guest-count" name="guests" type="number" min="1" max="300" placeholder="Skriv inn et antall mellom 1-300" required>
+          </fieldset>
+
+          <fieldset class="booking-step" data-step="4" data-image="{% static 'images/booking/Entre.jpg' %}" data-image-alt="Entre på Chitra house">
+            <legend>Book et arrangement</legend>
+            <img class="booking-guilloche" src="{% static 'images/booking/Guilloche.png' %}" alt="">
+            <p class="step-intro">Noe annet vi bør vite?</p>
+            <p class="step-description">Fortell oss gjerne om allergier, spesielle behov eller andre ønsker vi bør ta hensyn til.</p>
+            <label for="notes">Andre ønsker <span class="field-note">(valgfritt)</span></label>
+            <textarea id="notes" name="notes" rows="7" placeholder="Skriv her"></textarea>
+          </fieldset>
+
+          <fieldset class="booking-step" data-step="5" data-image="{% static 'images/booking/Fasade_28.jpg' %}" data-image-alt="Fasaden på Chitra house">
+            <legend>Book et arrangement</legend>
+            <img class="booking-guilloche" src="{% static 'images/booking/Guilloche.png' %}" alt="">
+            <p class="step-intro">Hvordan kan vi nå deg?</p>
+            <p class="step-description contact-intro">Jeg booker som</p>
+            <div class="booking-types">
+              <label class="booking-type-option"><input type="radio" name="booking_type" value="privat" checked required><span>Privat</span></label>
+              <label class="booking-type-option"><input type="radio" name="booking_type" value="bedrift"><span>Bedrift</span></label>
+            </div>
+            <div class="contact-fields">
+              <div><label for="name">Fullt navn</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+              <div><label for="email">Epost</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div><label for="phone">Telefonnummer</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+            </div>
+            <div class="business-fields" id="business-fields" hidden>
+              <div><label for="company-name">Bedrifts navn</label><input id="company-name" name="company_name" type="text"></div>
+              <div><label for="org-number">ORG</label><input id="org-number" name="org_number" type="text"></div>
+            </div>
+          </fieldset>
+
+          <div class="booking-actions">
+            <button class="back-button" type="button" id="back-button" hidden>Tilbake</button>
+            <button class="next-button" type="button" id="next-button">Neste <span aria-hidden="true">›</span></button>
+          </div>
+        </form>
+
+        <div class="booking-success" id="booking-success" hidden>
+          <h1>Takk for at du valgte Chitra House!</h1>
+          <p class="success-description">Vi har mottatt bookingen din og ser frem til å høre mer om planene dine. Teamet vårt tar kontakt med deg snart.</p>
+          <img class="booking-guilloche" src="{% static 'images/booking/Guilloche.png' %}" alt="">
+          <h2>Bookingdetaljer</h2>
+          <div class="confirmation-details">
+            <div class="confirmation-detail"><strong id="confirmation-event">Afternoon tea</strong><span>Arrangement</span></div>
+            <div class="confirmation-detail"><strong id="confirmation-date">13. oktober 2026</strong><span>Dato</span></div>
+            <div class="confirmation-detail"><strong id="confirmation-time">14.00</strong><span>Tidspunkt</span></div>
+            <div class="confirmation-detail"><strong id="confirmation-guests">6 gjester</strong><span>Antall gjester</span></div>
+          </div>
+          <div class="success-actions">
+            <a class="next-button" id="event-link" href="/">Les mer om arrangementet <span aria-hidden="true">›</span></a>
+            <a class="back-button success-back" href="/">Tilbake til forsiden <span aria-hidden="true">›</span></a>
+          </div>
+        </div>
+      </section>
+      <aside class="booking-image" aria-label="Chitra house">
+        <img src="{% static 'images/booking/Fasade_28.jpg' %}" alt="Fasaden på Chitra house">
+      </aside>
+    </div>
+  </main>
+  <script src="{% static_versioned 'js/booking.js' %}"></script>
+</body>
+</html>

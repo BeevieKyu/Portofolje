@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block head %}
+<title>{{ post_info.title }} - Webiser</title>
+<meta name="description" content="{{ post_text }}">
+<meta name="author" content="Webiser">
+<meta name="keywords" content="
+Webiser, Nettside, Profesjonell nettside, Nettsideutvikling, Nettside utvkling og design, Ny nettside for min bedrift, Nettsted, Nettsider i Norge, Ny nettside, Kjøpe nettside, Trenger ny nettside, Billig nettsider, bra nettside, trenger du en ny nettside?, trenger en ny nettside, nettsider,
+nettsider som skaper resultater,
+bra nettsider,
+nettsider til bedrift,
+jeg trenger en nettside,
+ny nettside,
+lage nettside pris,
+lage nettside,
+nettside pris,
+jeg trenger en ny nettside,
+jeg trenger en ny nettside for min bedrift,
+jeg trenger en ny nettside for til bedrift,
+bra nettside,
+bra nettside pris, 
+bra nettside for bedrift,
+nettside pris i 2024,
+nettside i 2024,
+">
+<meta property="og:url" content="https://webiser.no{{ request.get_full_path }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ post_info.title }}">
+<meta name="description" content="{{ post_text }}">
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/scss/store/blog/blog-detail.css' %}" type="text/css">
+
+
+
+<div class="page" style="background: white !important;">
+    <div class="content">
+       <div class="cover">
+          <div class="text" >
+            <img src="{{ post_info.image.url }}" alt="webiser blog post">
+             <h1 class="cover-h1" style="color: #183b56 !important;">{{ post_info.title }}</h1>
+             <p  class="author">Skrevet av <strong>{{ post_info.author }}</strong> {{ post_info.created_at | date:"d F Y" }}</p>
+             {% autoescape off %}
+             <p class="blog-text" id="blogText" >{{ post_info.text}}</p>
+             {% endautoescape %}
+             <br>
+               <button onclick="window.location.href='/kom-i-gang/'">Kontakt oss</button>
+            </div>
+         </div>
+    </div>
+</div>
+
+{% endblock %}

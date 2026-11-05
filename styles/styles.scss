@@ -1,0 +1,519 @@
+$ink: #101311;
+$paper: #e7e8df;
+$muted: #8d968d;
+$acid: #8eab1b;
+$line: rgba(231, 232, 223, .18);
+$mono: 'DM Mono', monospace;
+$display: 'Space Grotesk', sans-serif;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: $ink;
+    color: $paper;
+    font-family: $display;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body::before {
+    background-image: linear-gradient(rgba(201, 243, 29, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 243, 29, .035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: -1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-shell {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 5vw;
+    overflow: hidden;
+}
+
+.site-header {
+    align-items: center;
+    border-bottom: 1px solid $line;
+    display: flex;
+    justify-content: space-between;
+    padding: 27px 0;
+}
+
+.logo {
+    color: $acid;
+    font-family: $mono;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+}
+
+.logo i {
+    color: $paper;
+    font-style: normal;
+}
+
+.site-nav {
+    display: flex;
+    gap: 38px;
+    margin-left: auto;
+    margin-right: 60px;
+}
+
+.site-nav a,
+.status-pill,
+.eyebrow,
+.project-type,
+.project-number,
+.site-footer {
+    font-family: $mono;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.site-nav a {
+    color: $muted;
+    transition: color .2s ease;
+}
+
+.site-nav a:hover,
+.site-footer a:hover {
+    color: $acid;
+}
+
+.status-pill {
+    color: $acid;
+}
+
+.status-pill span {
+    background: $acid;
+    border-radius: 50%;
+    display: inline-block;
+    height: 6px;
+    margin-right: 7px;
+    width: 6px;
+}
+
+.hero {
+    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+    min-height: 680px;
+    padding: 100px 0 110px;
+    position: relative;
+}
+
+.eyebrow {
+    color: $muted;
+    margin: 0 0 32px;
+}
+
+.eyebrow span {
+    color: $acid;
+    margin-right: 18px;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2 {
+    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-weight: 500;
+    letter-spacing: -.06em;
+    line-height: .94;
+    margin-bottom: 36px;
+}
+
+h1 em,
+h2 em {
+    color: $acid;
+    font-style: normal;
+}
+
+.hero-intro {
+    color: $muted;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 38px;
+    max-width: 360px;
+}
+
+.button {
+    border: 1px solid $acid;
+    display: inline-flex;
+    font-family: $mono;
+    font-size: .72rem;
+    gap: 32px;
+    padding: 16px 18px;
+    text-transform: uppercase;
+    transition: background .2s ease, color .2s ease;
+}
+
+.button:hover {
+    background: $acid;
+    color: $ink;
+}
+
+.button span,
+.text-link span,
+.contact-link span {
+    font-size: 1.2em;
+}
+
+.hero-console {
+    border: 1px solid $line;
+    font-family: $mono;
+    margin: 0 0 0 4vw;
+    max-width: 480px;
+    position: relative;
+    transform: rotate(2deg);
+}
+
+.console-top {
+    border-bottom: 1px solid $line;
+    color: $muted;
+    display: flex;
+    font-size: .65rem;
+    justify-content: space-between;
+    padding: 13px 17px;
+}
+
+.console-dots {
+    color: $acid;
+}
+
+.console-body {
+    font-size: .75rem;
+    min-height: 250px;
+    padding: 28px 25px;
+}
+
+.console-body p {
+    margin-bottom: 20px;
+}
+
+.prompt {
+    color: $acid;
+    margin-right: 10px;
+}
+
+.console-output {
+    color: $muted;
+    padding-left: 23px;
+}
+
+.cursor {
+    background: $acid;
+    display: inline-block;
+    height: 1em;
+    margin-left: 4px;
+    vertical-align: -.15em;
+    width: 7px;
+}
+
+.cursor-static {
+    margin-left: 0;
+}
+
+.console-mark {
+    bottom: 20px;
+    color: $acid;
+    font-size: 2rem;
+    line-height: .8;
+    position: absolute;
+    right: 24px;
+    text-align: right;
+}
+
+.console-mark small {
+    color: $muted;
+    font-size: .45rem;
+}
+
+.scroll-note {
+    bottom: 35px;
+    color: $muted;
+    font-family: $mono;
+    font-size: .62rem;
+    left: 0;
+    position: absolute;
+    text-transform: uppercase;
+}
+
+.scroll-note span {
+    border: 1px solid $acid;
+    display: inline-block;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 14px;
+}
+
+.section {
+    border-top: 1px solid $line;
+    padding: 120px 0;
+}
+
+.section-heading {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2.8rem, 6vw, 5.6rem);
+    margin-bottom: 0;
+}
+
+.section-heading .eyebrow {
+    margin-bottom: 8px;
+    order: 2;
+}
+
+.project {
+    border-top: 1px solid $line;
+    display: grid;
+    grid-template-columns: 90px 1fr 38%;
+    min-height: 300px;
+    padding: 30px 0;
+}
+
+.project-number {
+    color: $acid;
+}
+
+.project-type {
+    color: $muted;
+    margin-bottom: 25px;
+}
+
+.project h3 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -.06em;
+    line-height: .92;
+    margin-bottom: 32px;
+}
+
+.text-link {
+    border-bottom: 1px solid $acid;
+    color: $acid;
+    font-family: $mono;
+    font-size: .7rem;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.project-art {
+    align-items: center;
+    display: flex;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 600;
+    justify-content: center;
+    letter-spacing: -.08em;
+    line-height: .75;
+    min-height: 240px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: transform .3s ease;
+}
+
+.project:hover .project-art {
+    transform: scale(.97);
+}
+
+.project-art b {
+    color: $acid;
+    font-weight: 600;
+}
+
+.art-northstar {
+    background: #e3e1d7;
+    color: #242a22;
+}
+
+.art-signal {
+    background: #27392e;
+    color: $paper;
+}
+
+.art-form {
+    background: $acid;
+    color: $ink;
+}
+
+.art-form b {
+    color: $ink;
+}
+
+.about-section {
+    padding-bottom: 90px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vw;
+}
+
+.about-grid h2 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+.about-copy {
+    color: $muted;
+    max-width: 400px;
+    padding-top: 12px;
+}
+
+.about-copy p {
+    margin-bottom: 24px;
+}
+
+.stack-list {
+    border-bottom: 1px solid $line;
+    border-top: 1px solid $line;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    padding: 18px 0;
+    color: $acid;
+    font-family: $mono;
+    font-size: .68rem;
+    text-transform: uppercase;
+}
+
+.contact-section {
+    border-top: 1px solid $line;
+    padding: 120px 0 145px;
+}
+
+.contact-section h2 {
+    font-size: clamp(3.2rem, 7vw, 7rem);
+}
+
+.contact-link {
+    border-bottom: 1px solid $acid;
+    color: $acid;
+    font-family: $mono;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    padding-bottom: 10px;
+}
+
+.contact-link span {
+    margin-left: 30px;
+}
+
+.site-footer {
+    border-top: 1px solid $line;
+    color: $muted;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 0 35px;
+}
+
+.site-footer a {
+    color: $paper;
+}
+
+@media (max-width: 700px) {
+    .site-shell {
+        padding: 0 22px;
+    }
+
+    .site-header {
+        gap: 20px;
+    }
+
+    .site-nav {
+        gap: 15px;
+        margin: 0;
+    }
+
+    .status-pill {
+        display: none;
+    }
+
+    .hero {
+        display: block;
+        min-height: auto;
+        padding: 85px 0 110px;
+    }
+
+    h1 {
+        font-size: clamp(3.2rem, 16vw, 5rem);
+    }
+
+    .hero-console {
+        margin: 75px 0 0 5vw;
+    }
+
+    .scroll-note {
+        bottom: 30px;
+    }
+
+    .section {
+        padding: 85px 0;
+    }
+
+    .section-heading {
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .section-heading .eyebrow {
+        order: 0;
+    }
+
+    .project {
+        grid-template-columns: 55px 1fr;
+    }
+
+    .project-art {
+        grid-column: 1 / -1;
+        margin-top: 30px;
+        min-height: 200px;
+    }
+
+    .about-grid {
+        display: block;
+    }
+
+    .about-copy {
+        padding-top: 0;
+    }
+
+    .stack-list {
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: flex-start;
+    }
+
+    .site-footer {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+}

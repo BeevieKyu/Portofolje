@@ -1,0 +1,20 @@
+// Chitra design tokens — the single source of truth for brand colours, fonts
+// and shared layout values. Emitted once, globally, via pages/global.scss.
+:root {
+    --primary: #460B2F;
+    --cream: #FFECE1;
+    --black: #1F1F1F;
+    --orange: #E5A264;
+    --gold: #CAB481;
+    --red: #9A031E;
+
+    --font-serif: "Cormorant Garamond", serif;
+    --font-sans: "Inter Tight", sans-serif;
+
+    // Horizontal gutter that lines content up with the nav logo. The nav's
+    // .content is max-width 1460px, centred, with 35px side padding, so the
+    // logo sits 35px in until the viewport passes 1460px, then tracks the
+    // centred container. Use as `padding-left`/`padding-right` on full-width
+    // sections (the % resolves against the section = viewport width).
+    --page-edge: max(35px, calc((100% - 1460px) / 2 + 35px));
+}

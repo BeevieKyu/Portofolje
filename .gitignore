@@ -1,0 +1,23 @@
+# Local operating-system metadata
+.DS_Store
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Local Django database and SQLite sidecar files
+*.sqlite3
+*.sqlite3-*
+
+# Local Git metadata and Claude scheduled-task state
+.git.disconnected/
+**/.claude/*.lock
+
+# Local environment variables
+.env
+.env.*
+!.env.example

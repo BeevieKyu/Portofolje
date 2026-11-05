@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load cache_bust %}
+
+{% block head %}
+<title>Afternoon tea | Chitra house</title>
+<meta name="description" content="Nyt en klassisk Afternoon Tea med utsøkte smaker, gode samtaler og tid til å nyte øyeblikket på Chitra house.">
+<meta name="author" content="Chitra">
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static_versioned 'scss/pages/pages.css' %}" type="text/css">
+<script src="{% static_versioned 'js/bryllup.js' %}" defer></script>
+
+<section class="video-hero" data-nav-theme="dark">
+    <video class="video-hero-media" autoplay muted loop playsinline preload="auto"
+           poster="{% static 'images/AfternoonTea/TeaVideo-poster.jpg' %}">
+        <source src="{% static 'images/AfternoonTea/TeaVideo.webm' %}" type="video/webm">
+        <source src="{% static 'images/AfternoonTea/TeaVideo.mp4' %}" type="video/mp4">
+    </video>
+    <div class="video-hero-overlay"></div>
+    <div class="video-hero-content">
+        <h1>Afternoon tea</h1>
+        <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>Nyt en klassisk Afternoon Tea med utsøkte smaker, gode samtaler og tid til å nyte øyeblikket.</p>
+    </div>
+</section>
+
+<section class="tea" data-nav-theme="dark">
+    <img class="tea-logo" src="{% static 'images/logo/ChitraLogo.webp' %}" alt="" loading="lazy" decoding="async">
+    <div class="tea-row">
+        <div class="tea-text">
+            <h2>Afternoon Tea på Chitra House</h2>
+            <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+            <p>Afternoon Tea på Chitra House inviterer til en rolig stund i vakre omgivelser. En anledning til å samles rundt bordet, nyte gode smaker og tiden sammen.</p>
+            <a href="{% url 'booking' %}" class="button">Book Afternoon tea <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="tea-photo">
+            <img src="{% static 'images/AfternoonTea/TeaChair.webp' %}" alt="Sølvtekanne, tekopp og friske roser på et mørkt bord foran en rød fløyelsstol på Chitra House" loading="lazy" decoding="async">
+        </div>
+    </div>
+</section>
+
+<section class="meeting" data-nav-theme="dark">
+    <div class="overlay-top"></div>
+    <img src="{% static 'images/AfternoonTea/lounge.webp' %}" alt="Stemningsfull lounge med lenestoler og dekket tebord i dagslys på Chitra House" loading="lazy" decoding="async">
+    <div class="overlay-bottom"></div>
+    <div class="content">
+        <h2>Afternoon Tea i vår Tea Lounge</h2>
+        <p>Sett deg til rette i vår elegante Tea Lounge og nyt Afternoon Tea i rolige og stemningsfulle omgivelser.</p>
+    </div>
+</section>
+
+<section class="gather" data-nav-theme="dark">
+    <div class="gather-sticky">
+        <img class="gather-squiggle" src="{% static 'images/SquiggleSamlet.png' %}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <div class="gather-gallery">
+            <div class="gather-photo gather-photo--tall">
+                <img src="{% static 'images/AfternoonTea/TeaCollage.webp' %}" alt="Dekket tebord med etasjefat, kaker og te på Chitra House" loading="lazy" decoding="async">
+            </div>
+            <div class="gather-photo-stack">
+                <img src="{% static 'images/AfternoonTea/menuCollage.webp' %}" alt="Utvalg av søtt og salt bakverk servert til Afternoon Tea" loading="lazy" decoding="async">
+                <img src="{% static 'images/AfternoonTea/BoxCollage.webp' %}" alt="Delikatesser og småretter anrettet til Afternoon Tea" loading="lazy" decoding="async">
+            </div>
+        </div>
+        <div class="gather-panel">
+            <h2>Te med historie og kvalitet</h2>
+            <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+            <p>På Chitra House serveres te fra Newby, kjent for nøye utvalgte teer og fokus på kvalitet. Utforsk utvalget og finn teen som setter smaken på din Afternoon Tea-opplevelse.</p>
+            <a href="https://www.newbyteas.com" class="button" target="_blank" rel="noopener">Oppdag Newby Tea <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</section>
+
+<section class="finale">
+    <div class="tribute-reveal" data-nav-theme="dark">
+        <img class="tribute-reveal-fill" src="{% static 'images/AfternoonTea/TeaRoom.png' %}" alt="Elegant terom med dekket bord og lenestoler på Chitra House" loading="lazy" decoding="async">
+    </div>
+</section>
+
+<section class="plan" data-nav-theme="light">
+    <img class="plan-flower" src="{% static 'images/FLower.png' %}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <div class="plan-inner">
+        <h2>En anledning til å samles</h2>
+        <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>Enten dere markerer noe spesielt eller bare ønsker en hyggelig stund sammen, byr Afternoon Tea på Chitra House på en opplevelse utenom det vanlige.</p>
+        <a href="{% url 'booking' %}" class="button">Book Afternoon tea <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+</section>
+
+{% endblock %}

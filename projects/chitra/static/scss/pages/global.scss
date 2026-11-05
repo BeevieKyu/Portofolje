@@ -1,0 +1,5 @@
+// Sitewide stylesheet — loaded on every page from core/base.html, before each
+// page's own stylesheet. Tokens, reset/interaction baseline, and the button.
+@use '../tokens';
+@use '../base';
+@use '../button';

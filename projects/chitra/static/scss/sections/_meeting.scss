@@ -1,0 +1,128 @@
+// Copied verbatim from the home page "Møter i skandinaviske omgivelser"
+// (.meeting) section in sections/home/_meeting — full-bleed photo with dark
+// gradient overlays and left-aligned cream text. Only the photo and copy differ.
+@media (max-width: 1139px) {
+    .meeting{
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+        .overlay-top{
+            width: 100%;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+            z-index: 40;
+        }
+        img{
+            display: block;
+            width: 100%;
+            height: 100vh;
+            filter: brightness(65%);
+            object-fit: cover;
+            z-index: 9;
+        }
+        .overlay-bottom{
+            width: 100%;
+            height: 90%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            z-index: 40;
+        }
+        .content{
+            position: absolute;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 24px;
+            color: var(--cream);
+
+            h2{
+                font-family: var(--font-serif);
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 1.3;
+                margin-bottom: 16px;
+            }
+            p{
+                font-size: 16px;
+                line-height: 1.6;
+                opacity: .92;
+                max-width: 420px;
+                margin-bottom: 24px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .meeting{
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+        .overlay-top{
+            width: 100%;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+            z-index: 40;
+        }
+        .overlay-bottom{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            z-index: 40;
+        }
+        img{
+            display: block;
+            width: 100%;
+            height: 100vh;
+            filter: brightness(65%);
+            object-fit: cover;
+            z-index: 9;
+        }
+        .content{
+            position: absolute;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1460px;
+            margin-inline: auto;
+            padding: 0 35px;
+            color: var(--cream);
+
+            h2{
+                font-family: var(--font-serif);
+                font-weight: 500;
+                font-size: 50px;
+                line-height: 1.25;
+                margin-bottom: 22px;
+            }
+            p{
+                font-size: 20px;
+                line-height: 1.6;
+                opacity: .92;
+                max-width: 540px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

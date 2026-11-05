@@ -1,0 +1,53 @@
+{% load static %}
+{% load cache_bust %}
+<link rel="stylesheet" href="{% static_versioned 'scss/store/footer.css' %}" type="text/css">
+<script src="{% static_versioned 'js/footer.js' %}" defer></script>
+
+<div class="site-footer">
+    <div class="site-footer-hero" data-nav-theme="dark">
+        <div class="site-footer-bg">
+            <img class="site-footer-bg-img" src="{% static 'images/Homepage/Fasade_28.jpg' %}" alt="">
+            <img class="site-footer-bg-img site-footer-bg-swap" alt="" aria-hidden="true">
+        </div>
+        <div class="site-footer-overlay"></div>
+        <img class="site-footer-logo" src="{% static 'images/logo/ChitraLogo.webp' %}" alt="">
+        <div class="site-footer-top">
+            <h2>Book ditt drømme arrangement</h2>
+            <div class="site-footer-tags">
+                <a href="{% url 'bryllup' %}" class="tag" data-footer-bg="{% static 'images/Bryllup/overview.webp' %}">Bryllup</a>
+                <a href="{% url 'afternoon_tea' %}" class="tag" data-footer-bg="{% static 'images/AfternoonTea/lounge.webp' %}">Afternoon tea</a>
+                <a href="{% url 'moter_og_konferanser' %}" class="tag" data-footer-bg="{% static 'images/Konferanse/1.etg_Konferanse.png' %}">Møter &amp; konferanser</a>
+                <a href="{% url 'privat_arrangement' %}" class="tag" data-footer-bg="{% static 'images/Privat/Hall.png' %}">Privat arrangement</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-footer-contact" data-nav-theme="light">
+        <img class="contact-squiggle contact-squiggle-left" src="{% static 'images/Squigglereise.png' %}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="contact-squiggle contact-squiggle-right" src="{% static 'images/Squigglereise.png' %}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <div class="site-footer-contact-inner">
+            <div class="contact-heading">
+                <h3>Kontakt</h3>
+                <img class="contact-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+            </div>
+
+            <div class="contact-info">
+                <p class="contact-name">Johnny Steen</p>
+                <p class="contact-role">Driftsdirektør</p>
+
+                <div class="contact-lines">
+                    <a href="tel:+4796208861" class="contact-phone">+47 96 20 88 61</a>
+                    <span class="contact-sep" aria-hidden="true">·</span>
+                    <a href="mailto:johnny.steen@chitra.no" class="contact-email">johnny.steen@chitra.no</a>
+                </div>
+
+                <p class="contact-address">Snarøyveien 34, 1364 Fornebu, Norway</p>
+
+                <div class="site-footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

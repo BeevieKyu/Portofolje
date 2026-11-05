@@ -1,0 +1,11 @@
+// Every page's stylesheet in one bundle. Each _<page> partial @use-s the
+// section partials it needs; @use de-dupes, so a section shared by several
+// pages is emitted once. Loaded by every page template (after global.css).
+@use 'home';
+@use 'bryllup';
+@use 'privat-arrangement';
+@use 'moter-og-konferanser';
+@use 'afternoon-tea';
+@use 'om-oss';
+@use 'kolleksjoner';
+@use 'galleri';

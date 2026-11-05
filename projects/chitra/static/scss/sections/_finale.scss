@@ -1,0 +1,41 @@
+// Closing "ball reveal" — the arch-masked garden photo (reveal.webp) grows on
+// scroll (driven by js/bryllup.js) up over the pinned .gather section until it
+// reaches full size, then the footer follows. Same grow mechanic as the OmOss
+// .cta + .tribute pair, scoped so it doesn't touch the shared .tribute rules.
+.finale {
+    position: relative;
+    z-index: 2;
+    // Overlap the last 100vh of .gather's scroll track so the reveal grows
+    // over it while its inner block is still pinned.
+    margin-top: -100vh;
+
+    // Fade the bottom of the reveal photo into the cream .plan section below
+    // it for a soft transition instead of a hard edge.
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: min(45vh, 360px);
+        pointer-events: none;
+        z-index: 3;
+        background: linear-gradient(to bottom, rgba(255, 236, 225, 0), var(--cream));
+    }
+
+    .tribute-reveal {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+    }
+
+    .tribute-reveal-fill {
+        display: block;
+        width: 100%;
+        height: 100%;
+        // reveal.webp is already the right shape — show it whole, never crop.
+        object-fit: contain;
+        transform-origin: center center;
+        will-change: transform;
+    }
+}

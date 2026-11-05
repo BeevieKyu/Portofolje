@@ -1,0 +1,85 @@
+{% load static %}
+{% load cache_bust %}
+<link rel="stylesheet" href="{% static_versioned 'scss/store/nav.css' %}" type="text/css">
+
+
+<div id="mobileNav">
+    <div class="hamburger" id="hamburger" onclick="menu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <a href="/" class="logo"><img src="{% static 'images/logo/ChitraLogo.webp' %}" alt="Chitra"></a>
+
+    <div id="sidebar">
+        <div class="sidebar-links">
+            <a href="{% url 'om_oss' %}" class="sidebar-link">Om oss</a>
+            <span class="sidebar-eyebrow">Arrangementer</span>
+            <a href="{% url 'bryllup' %}" class="sidebar-link">Bryllup</a>
+            <a href="{% url 'moter_og_konferanser' %}" class="sidebar-link">Møter og konferanser</a>
+            <a href="{% url 'afternoon_tea' %}" class="sidebar-link">Afternoon tea</a>
+            <a href="{% url 'privat_arrangement' %}" class="sidebar-link">Privat arrangement</a>
+            <a href="{% url 'kolleksjoner' %}" class="sidebar-link">Kolleksjoner</a>
+            <a href="{% url 'galleri' %}" class="sidebar-link">Galleri</a>
+        </div>
+        <div class="sidebar-footer">
+            <a href="{% url 'booking' %}" class="button"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Booking</a>
+        </div>
+    </div>
+</div>
+
+<div id="desNav">
+    <div class="content">
+        <a href="/" class="logo"><img src="{% static 'images/logo/ChitraLogo.webp' %}" alt="Chitra"></a>
+        <nav class="links" aria-label="Hovedmeny">
+            <a href="{% url 'om_oss' %}">Om oss</a>
+            <details class="nav-dropdown" name="nav-menu">
+                <summary>Arrangementer <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+                <div class="nav-dropdown-panel">
+                    <a href="{% url 'bryllup' %}">Bryllup</a>
+                    <a href="{% url 'moter_og_konferanser' %}">Møter og konferanser</a>
+                    <a href="{% url 'afternoon_tea' %}">Afternoon tea</a>
+                    <a href="{% url 'privat_arrangement' %}">Privat arrangement</a>
+                </div>
+            </details>
+            <a href="{% url 'kolleksjoner' %}">Kolleksjoner</a>
+            <a href="{% url 'galleri' %}">Galleri</a>
+        </nav>
+        <div class="nav-actions">
+            <details class="language-select" name="nav-menu">
+                <summary aria-label="Velg språk">
+                    <span class="lang-current">NO</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="nav-dropdown-panel language-panel" role="menu">
+                    <button type="button" class="lang-option is-active" role="menuitemradio" aria-checked="true" data-lang="NO">
+                        <span class="lang-name">NO</span>
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 22 16" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                                <rect width="22" height="16" fill="#BA0C2F"/>
+                                <rect x="6" width="4" height="16" fill="#fff"/>
+                                <rect y="6" width="22" height="4" fill="#fff"/>
+                                <rect x="7" width="2" height="16" fill="#00205B"/>
+                                <rect y="7" width="22" height="2" fill="#00205B"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <button type="button" class="lang-option" role="menuitemradio" aria-checked="false" data-lang="ENG">
+                        <span class="lang-name">ENG</span>
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                                <clipPath id="ukjackClip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+                                <rect width="60" height="30" fill="#012169"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukjackClip)" stroke="#C8102E" stroke-width="4"/>
+                                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </details>
+            <a href="{% url 'booking' %}" class="button">Booking</a>
+        </div>
+    </div>
+</div>

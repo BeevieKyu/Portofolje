@@ -1,0 +1,88 @@
+:root {
+  --primary: #460B2F;
+  --cream: #FFECE1;
+  --black: #1F1F1F;
+  --orange: #E5A264;
+  --gold: #CAB481;
+  --red: #9A031E;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter Tight", sans-serif;
+  --page-edge: max(35px, calc((100% - 1460px) / 2 + 35px));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+}
+
+html, body {
+  position: relative;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  margin: auto;
+}
+
+body {
+  color: var(--primary);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.hero-divider,
+.essence-divider {
+  width: 200px;
+}
+
+@media only screen and (min-width: 1140px) {
+  .hero-divider,
+  .essence-divider {
+    width: 280px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  padding: 10px 22px;
+  border: 2px solid currentColor;
+  border-radius: 30px;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.25s ease, opacity 0.25s ease;
+}
+.button:hover, .button:focus-visible {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+.button i {
+  font-size: 12px;
+}
+
+.button--cream {
+  border-color: var(--cream);
+  color: var(--cream);
+}
+
+@media only screen and (min-width: 1140px) {
+  .button {
+    padding: 11px 24px;
+  }
+}
+
+/*# sourceMappingURL=global.css.map */

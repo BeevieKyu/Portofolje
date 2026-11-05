@@ -1,0 +1,92 @@
+// Galleri page — every photo in images/Galleri as a balanced column masonry.
+// js/galleri.js sorts the figures into the shortest column, so columns stay
+// even and there are never any gaps. Without JS the CSS multicol below is the
+// fallback.
+.gallery {
+    position: relative;
+    z-index: 1;
+    background: var(--primary);
+    padding: 24px 16px 72px;
+}
+
+.gallery-grid {
+    column-count: 2;
+    column-gap: 8px;
+    max-width: 1460px;
+    margin: 0 auto;
+
+    &.gallery-grid--js {
+        column-count: auto;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+.gallery-col {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gallery-item {
+    margin: 0 0 8px;
+    break-inside: avoid;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .gallery-col & {
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .gallery-grid {
+        column-count: 3;
+        column-gap: 10px;
+
+        &.gallery-grid--js {
+            column-count: auto;
+            gap: 10px;
+        }
+    }
+
+    .gallery-col {
+        gap: 10px;
+    }
+
+    .gallery-item {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .gallery {
+        padding: 40px var(--page-edge) 96px;
+    }
+
+    .gallery-grid {
+        column-count: 4;
+        column-gap: 12px;
+
+        &.gallery-grid--js {
+            column-count: auto;
+            gap: 12px;
+        }
+    }
+
+    .gallery-col {
+        gap: 12px;
+    }
+
+    .gallery-item {
+        margin-bottom: 12px;
+    }
+}

@@ -1,0 +1,162 @@
+// Home scroll-hero: three fixed photo layers (cover / intro / legacy) that
+// crossfade + zoom as their scroll-anchors pass through the viewport. Driven by
+// `animation-timeline: view()` where supported, with a rAF fallback in
+// js/home.js. The per-breakpoint layout of .photo-layer .content lives in
+// pages/home.scss.
+@keyframes scroll-bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+.scroll-track {
+    // How much scrolling each hero scene occupies. Bump this to make the
+    // crossfade + zoom unfold over more scroll distance.
+    --scene-scroll: 185vh;
+}
+
+.scroll-anchor {
+    height: var(--scene-scroll, 100vh);
+    pointer-events: none;
+}
+
+.photo-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: #000;
+    transform: translateZ(0);
+}
+
+.photo-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+    transform: translateZ(0);
+    will-change: opacity;
+
+    &.is-active {
+        pointer-events: auto;
+    }
+}
+
+// Outgoing scene stays on top and dissolves away to reveal the next one
+// underneath - otherwise the incoming layer (higher in the DOM) hits full
+// opacity first and the crossfade collapses into a hard cut.
+.photo-layer[data-layer="cover"]  { z-index: 4; }
+.photo-layer[data-layer="intro"]  { z-index: 3; }
+.photo-layer[data-layer="legacy"] { z-index: 2; }
+
+// Uniform darkening in place of `filter: brightness()` on the <img>, so the
+// scaled image stays a cheap GPU texture rather than a re-filtered surface.
+.photo-layer > img {
+    filter: none !important;
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1);
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+.photo-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.photo-layer[data-layer="intro"]::after,
+.photo-layer[data-layer="legacy"]::after {
+    background: rgba(0, 0, 0, 0.32);
+}
+
+.photo-layer > .content {
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+// Wide hold, then a quick eased fade. Because the incoming scene reaches full
+// opacity while the outgoing one is still opaque on top (see the reversed
+// z-index above), the transition is the top photo dissolving to reveal a solid
+// photo underneath - no muddy dip to the black backdrop.
+@keyframes hero-fade {
+    0%   { opacity: 0; }
+    6%   { opacity: 0.12; }
+    16%  { opacity: 1; }
+    84%  { opacity: 1; }
+    94%  { opacity: 0.12; }
+    100% { opacity: 0; }
+}
+
+@keyframes hero-zoom {
+    from { transform: scale3d(1.03, 1.03, 1); }
+    to   { transform: scale3d(1.18, 1.18, 1); }
+}
+
+// Text shares the photo's opacity timing exactly - they fade in and out
+// together. It keeps a gentle drift across the scene for life.
+@keyframes hero-text {
+    0%   { opacity: 0; transform: translate3d(0, 40px, 0); }
+    6%   { opacity: 0.12; }
+    16%  { opacity: 1; }
+    84%  { opacity: 1; }
+    94%  { opacity: 0.12; }
+    100% { opacity: 0; transform: translate3d(0, -40px, 0); }
+}
+
+// Scroll-driven: crossfade, zoom and text drift are all keyed to each anchor's
+// position in the viewport and run on the compositor thread, so other scripts
+// or layout on the main thread can't make them stutter. home.js carries a rAF
+// fallback for browsers without `animation-timeline`.
+@supports (animation-timeline: view()) {
+    body {
+        timeline-scope: --hero-cover, --hero-intro, --hero-legacy;
+    }
+
+    .scroll-anchor[data-layer="cover"]  { view-timeline: --hero-cover block; }
+    .scroll-anchor[data-layer="intro"]  { view-timeline: --hero-intro block; }
+    .scroll-anchor[data-layer="legacy"] { view-timeline: --hero-legacy block; }
+
+    .photo-layer,
+    .photo-layer > img,
+    .photo-layer > .content {
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+    }
+
+    .photo-layer           { animation-name: hero-fade; }
+    .photo-layer > img      { animation-name: hero-zoom; }
+    .photo-layer > .content { animation-name: hero-text; }
+
+    .photo-layer[data-layer="cover"],
+    .photo-layer[data-layer="cover"] > img,
+    .photo-layer[data-layer="cover"] > .content   { animation-timeline: --hero-cover; }
+
+    .photo-layer[data-layer="intro"],
+    .photo-layer[data-layer="intro"] > img,
+    .photo-layer[data-layer="intro"] > .content   { animation-timeline: --hero-intro; }
+
+    .photo-layer[data-layer="legacy"],
+    .photo-layer[data-layer="legacy"] > img,
+    .photo-layer[data-layer="legacy"] > .content  { animation-timeline: --hero-legacy; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .photo-layer,
+    .photo-layer > img,
+    .photo-layer > .content {
+        animation: none !important;
+    }
+    .photo-layer > img,
+    .photo-layer > .content {
+        transform: none !important;
+    }
+    .photo-layer.is-active {
+        opacity: 1;
+    }
+}

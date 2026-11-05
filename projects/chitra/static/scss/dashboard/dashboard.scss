@@ -1,0 +1,584 @@
+$primaryColor: #460B2F;
+$black: #1F1F1F;
+$white: #FFECE1;
+$paper: #FFECE1;
+$error: #9A031E;
+$border: rgba(31, 31, 31, 0.1);
+
+* { box-sizing: border-box; }
+
+body.dash {
+    margin: 0;
+    font-family: "Inter Tight", sans-serif;
+    color: $black;
+    background: $white;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dash h1, .dash h2, .dash h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    margin: 0;
+}
+
+.dash a { color: inherit; }
+
+/* ---------- Shell / layout ---------- */
+
+.dash-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dash-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: $paper;
+    border-right: 1px solid $border;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.dash-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 6px 10px 24px;
+    img { height: 26px; width: auto; }
+    span {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        font-size: 19px;
+        color: $black;
+    }
+}
+
+.dash-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.dash-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(31, 31, 31, 0.7);
+    transition: background .2s ease, color .2s ease;
+    i { width: 16px; text-align: center; font-size: 15px; opacity: .85; }
+    &:hover { background: rgba(0, 72, 118, 0.06); color: $black; }
+    &.is-active {
+        background: $primaryColor;
+        color: $white;
+        i { opacity: 1; }
+    }
+}
+
+.dash-sidebar-foot {
+    border-top: 1px solid $border;
+    padding-top: 14px;
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dash-view-site {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $primaryColor;
+    text-decoration: none;
+    padding: 0 10px;
+    i { font-size: 11px; }
+}
+
+.dash-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    .dash-user-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: $black;
+        text-transform: capitalize;
+    }
+    form { margin: 0; }
+}
+
+.dash-logout {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(31, 31, 31, 0.55);
+    padding: 4px;
+    transition: color .2s ease;
+    &:hover { color: $error; }
+}
+
+.dash-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-topbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 32px;
+    border-bottom: 1px solid $border;
+    background: $paper;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    h1 { font-size: 26px; flex: 1; min-width: 0; }
+}
+
+.dash-topbar-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.dash-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: $black;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.dash-content {
+    padding: 28px 32px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---------- Flash messages ---------- */
+
+.dash-messages {
+    padding: 20px 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dash-flash {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    background: rgba(0, 72, 118, 0.07);
+    color: $primaryColor;
+    border: 1px solid rgba(0, 72, 118, 0.16);
+    transition: opacity .3s ease, transform .3s ease;
+    &.dash-flash-error { background: rgba(194, 55, 58, 0.07); color: $error; border-color: rgba(194, 55, 58, 0.18); }
+    &.is-leaving { opacity: 0; transform: translateY(-6px); }
+}
+
+/* ---------- Panels ---------- */
+
+.dash-panel {
+    background: $paper;
+    border: 1px solid $border;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 20, 40, 0.04);
+}
+
+.dash-empty {
+    font-size: 14px;
+    color: rgba(31, 31, 31, 0.6);
+    padding: 10px 2px;
+    a { color: $primaryColor; font-weight: 600; text-decoration: underline; }
+}
+
+/* ---------- Stat grid (home) ---------- */
+
+.dash-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.dash-stat-card {
+    background: $paper;
+    border: 1px solid $border;
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 10px 30px rgba(0, 20, 40, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dash-stat-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(31, 31, 31, 0.6);
+}
+
+.dash-stat-num {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: $black;
+    line-height: 1.1;
+}
+
+.dash-stat-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: $primaryColor;
+    text-decoration: none;
+    margin-top: 4px;
+    i { font-size: 10px; }
+}
+
+/* ---------- Table ---------- */
+
+.dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    th, td {
+        text-align: left;
+        padding: 12px 10px;
+        font-size: 13.5px;
+        border-bottom: 1px solid $border;
+    }
+    th {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: rgba(31, 31, 31, 0.55);
+    }
+    tbody tr {
+        cursor: pointer;
+        transition: background .15s ease;
+        &:hover { background: rgba(0, 72, 118, 0.045); }
+        &:last-child td { border-bottom: none; }
+    }
+}
+
+.dash-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    border-radius: 30px;
+    background: rgba(0, 72, 118, 0.1);
+    color: $primaryColor;
+}
+
+/* ---------- Forms ---------- */
+
+.dash-form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin: 24px 0 4px;
+    padding-top: 18px;
+    border-top: 1px solid $border;
+    i { font-size: 14px; color: $primaryColor; opacity: .85; }
+    &:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+}
+
+.dash-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0 16px;
+}
+
+.dash-field {
+    margin-bottom: 16px;
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: $black;
+        margin-bottom: 7px;
+    }
+}
+
+.dash-input, .dash-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(31, 31, 31, 0.14);
+    background: rgba(211, 211, 211, 0.14);
+    font-size: 14.5px;
+    font-family: inherit;
+    color: $black;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    &:focus {
+        outline: none;
+        border-color: $primaryColor;
+        background: $paper;
+        box-shadow: 0 0 0 4px rgba(0, 72, 118, 0.1);
+    }
+}
+
+.dash-textarea { resize: vertical; min-height: 90px; }
+
+.dash-field-error {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: $error;
+}
+
+.dash-field.has-error {
+    .dash-input, .dash-textarea { border-color: $error; background: rgba(194, 55, 58, 0.05); }
+}
+
+.dash-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+/* ---------- Buttons ---------- */
+
+.dash-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 11px 22px;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s ease, background .2s ease;
+    i { font-size: 12px; }
+    &:hover { opacity: .9; }
+    &.dash-button-primary { background: $primaryColor; color: $white; }
+    &.dash-button-secondary { background: $paper; color: $black; border: 1.5px solid rgba(31, 31, 31, 0.16); }
+    &.dash-button-danger { background: rgba(194, 55, 58, 0.1); color: $error; }
+    &.dash-button-block { width: 100%; padding: 13px 22px; }
+}
+
+/* ---------- Modal ---------- */
+
+.dash-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 15, 28, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    &[hidden] { display: none; }
+}
+
+.dash-modal {
+    background: $paper;
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 70px rgba(0, 15, 28, 0.3);
+}
+
+.dash-modal-icon {
+    font-size: 26px;
+    color: $error;
+    margin-bottom: 10px;
+}
+
+.dash-modal h2 { font-size: 19px; margin-bottom: 6px; }
+.dash-modal p { font-size: 13.5px; color: rgba(31, 31, 31, 0.65); margin: 0 0 20px; }
+
+.dash-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    .dash-button { flex: 1; }
+}
+
+.dash-hidden-form { display: none; }
+
+/* ---------- Filter bar / tabs ---------- */
+
+.dash-filter-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border;
+}
+
+.dash-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(31, 31, 31, 0.6);
+    text-decoration: none;
+    background: rgba(211, 211, 211, 0.18);
+    transition: background .2s ease, color .2s ease;
+    &:hover { color: $black; }
+    &.is-active { background: $primaryColor; color: $white; }
+}
+
+.dash-tab-count {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: .75;
+}
+
+.dash-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $primaryColor;
+}
+
+.dash-table tbody tr.is-unread td { font-weight: 700; }
+
+/* ---------- Detail groups (henvendelse) ---------- */
+
+.dash-detail-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.dash-detail-group {
+    h2 { font-size: 17px; margin-bottom: 14px; }
+    dl { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    dl > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        &.stacked { flex-direction: column; gap: 4px; }
+    }
+    dt { font-size: 12.5px; color: rgba(31, 31, 31, 0.55); flex-shrink: 0; }
+    dd { margin: 0; font-size: 13.5px; font-weight: 500; text-align: right; }
+    .stacked dd { text-align: left; font-weight: 400; line-height: 1.55; }
+}
+
+/* ---------- Login ---------- */
+
+.dash-login-body {
+    background: linear-gradient(160deg, #f0f4f7 0%, $white 60%);
+    min-height: 100vh;
+}
+
+.dash-login-shell {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.dash-login-card {
+    background: $paper;
+    border-radius: 18px;
+    box-shadow: 0 30px 80px rgba(0, 20, 40, 0.1);
+    padding: 40px 36px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+}
+
+.dash-login-logo { height: 34px; margin-bottom: 20px; }
+
+.dash-login-card h1 { font-size: 26px; margin-bottom: 6px; }
+
+.dash-login-sub {
+    font-size: 13.5px;
+    color: rgba(31, 31, 31, 0.6);
+    margin: 0 0 20px;
+}
+
+.dash-login-form {
+    text-align: left;
+    .dash-flash { margin-bottom: 16px; }
+}
+
+.dash-login-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(31, 31, 31, 0.55);
+    text-decoration: none;
+    i { font-size: 10px; }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .dash-menu-toggle { display: block; }
+    .dash-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 50;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: 0 0 0 100vmax rgba(0, 15, 28, 0);
+    }
+    .dash-shell.is-sidebar-open .dash-sidebar {
+        transform: translateX(0);
+        box-shadow: 0 0 0 100vmax rgba(0, 15, 28, 0.4);
+    }
+    .dash-topbar, .dash-content, .dash-messages { padding-left: 18px; padding-right: 18px; }
+}
+
+.wordmark {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

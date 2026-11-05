@@ -1,0 +1,144 @@
+.tribute {
+    position: relative;
+    z-index: 2;
+    margin-top: -100vh;
+
+    .tribute-reveal {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+
+        .tribute-reveal-fill {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+    }
+
+    .tribute-content {
+        position: relative;
+        z-index: 1;
+        // Small overlap only: the cream block's top edge meets the "ball"
+        // (LigthBall dome) low down, where its sides are vertical, so the dome
+        // grows against the dark section for most of the scroll before this
+        // solid part caps it.
+        margin-top: -50vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px 60px;
+        background: var(--cream);
+    }
+
+    .tribute-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+        max-width: 620px;
+    }
+
+    .tribute-closing {
+        position: relative;
+        z-index: 1;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+    }
+
+    .tribute-photo {
+        width: min(280px, 82%);
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 522 / 745;
+            object-fit: cover;
+            clip-path: url('#foundation-arch-clip');
+        }
+    }
+
+    .tribute-text {
+        color: var(--primary);
+
+        h2 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .hero-divider {
+            display: block;
+            height: auto;
+            margin: 0 auto 24px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: .9;
+        }
+
+        .button {
+            margin-top: 24px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .tribute {
+        .tribute-content {
+            padding: 0 var(--page-edge) 100px;
+        }
+
+        .tribute-inner {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            width: 100%;
+            max-width: 1460px;
+            text-align: left;
+        }
+
+        .tribute-photo {
+            flex: 0 0 auto;
+            width: min(420px, 32%);
+        }
+
+        .tribute-text {
+            max-width: 620px;
+
+            h2 {
+                font-size: 50px;
+                line-height: 1.25;
+                margin-bottom: 26px;
+            }
+
+            .hero-divider {
+                margin: 0 0 28px;
+            }
+
+            p {
+                font-size: 20px;
+                line-height: 1.7;
+            }
+
+            .button {
+                margin-top: 28px;
+            }
+        }
+    }
+}

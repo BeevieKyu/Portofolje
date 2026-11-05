@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Oversikt{% endblock %}
+{% block page_title %}Oversikt{% endblock %}
+
+{% block content %}
+
+<div class="dash-stat-grid">
+    <div class="dash-stat-card">
+        <span class="dash-stat-label">Henvendelser{% if ulest_henvendelse_count %} <span class="dash-badge">{{ ulest_henvendelse_count }} nye</span>{% endif %}</span>
+        <span class="dash-stat-num">{{ henvendelse_count }}</span>
+        <a href="{% url 'dashboard:henvendelse_list' %}" class="dash-stat-link">Se alle henvendelser<i class="fa-light fa-arrow-right"></i></a>
+    </div>
+</div>
+
+{% endblock %}

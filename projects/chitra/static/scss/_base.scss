@@ -1,0 +1,61 @@
+// Sitewide baseline: reset, page defaults, and the interaction baseline
+// (keyboard focus + reduced-motion). Emitted once, globally, via
+// pages/global.scss, before every page's own stylesheet — so a page can still
+// override specifics, but every interactive element on every page gets a
+// visible keyboard-focus ring and respects the user's reduced-motion
+// preference even if its own stylesheet forgot to.
+// (Fonts are loaded from core/base.html — Cormorant Garamond + Inter Tight.)
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    box-sizing: border-box;
+}
+
+html, body {
+    position: relative;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    margin: auto;
+}
+
+// Default text colour sitewide. Sections on a dark background override this
+// with `color: var(--cream)` on their own container; everything on a light
+// background (all body copy and headings) inherits the brand primary.
+body {
+    color: var(--primary);
+}
+
+a, button, input, textarea, select, summary, [tabindex] {
+    &:focus-visible {
+        outline: 2px solid var(--red);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+// Guilloche flourish under a section heading — one width across every content
+// section on every page. Section partials set only its margin; the page-hero
+// variants (.video-hero, home scroll-hero) keep their own larger width, which
+// wins on specificity.
+.hero-divider,
+.essence-divider {
+    width: 200px;
+}
+
+@media only screen and (min-width: 1140px) {
+    .hero-divider,
+    .essence-divider {
+        width: 280px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

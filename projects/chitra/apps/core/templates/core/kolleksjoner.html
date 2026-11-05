@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load cache_bust %}
+
+{% block head %}
+<title>Kolleksjoner | Chitra house</title>
+<meta name="description" content="Chitras kolleksjoner – der indisk kulturarv møter skandinavisk skjønnhet i utvalgt servise, sølvtøy og dekorative objekter på Chitra house.">
+<meta name="author" content="Chitra">
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static_versioned 'scss/pages/pages.css' %}" type="text/css">
+<script src="{% static_versioned 'js/bryllup.js' %}" defer></script>
+
+<section class="video-hero" data-nav-theme="dark">
+    <img class="video-hero-media" src="{% static 'images/Kolleksjoner/1.etg_02.png' %}" alt="Stue i 1. etasje på Chitra house med forgylte speil, kremfarget sofa og røde fløyelsstoler" fetchpriority="high" decoding="async">
+    <div class="video-hero-overlay"></div>
+    <div class="video-hero-content">
+        <h1>Våre kolleksjoner</h1>
+        <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>Der indisk kulturarv møter skandinavisk skjønnhet.</p>
+    </div>
+</section>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <clipPath id="foundation-arch-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5,0.0067 C 0.7709,0.0067 0.9904,0.1606 0.9904,0.3503 L 0.9904,0.9933 L 0.0096,0.9933 L 0.0096,0.3503 C 0.0096,0.1606 0.2292,0.0067 0.5,0.0067 Z"></path>
+    </clipPath>
+</svg>
+
+<section class="foundation" data-nav-theme="dark">
+    <div class="foundation-panel">
+        <h2>Chitra collection</h2>
+        <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>Chitra House Oslo er en del av den internasjonale Chitra Collection. Bak Chitra House ligger en drøm og en filosofi, skapt til minne om Chitra, avdøde kone til grunnleggeren Nirmal K. Sethia.</p>
+        <a href="https://www.chitracollection.com/" class="button">Oppdag Chitra Collection <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="foundation-photo">
+        <img src="{% static 'images/Kolleksjoner/BlåTing.png' %}" alt="Turkisemaljert teboks i sølv og gull med drevet bladverk fra Chitra Collection" loading="lazy" decoding="async">
+    </div>
+</section>
+
+<section class="essence essence--pinned" data-nav-theme="dark">
+    <div class="essence-sticky">
+        <div class="essence-photo">
+            <img src="{% static 'images/Kolleksjoner/GullKopp.png' %}" alt="Gulldekorert tekopp og skål med håndmalte figurmotiver fra Chitra Collection" loading="lazy" decoding="async">
+        </div>
+        <div class="essence-panel">
+            <h2>Chitra collection</h2>
+            <img class="essence-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+            <p>Samlingen er kjent for å være en av verdens mest omfattende private samlinger av historisk teservise, med gjenstander fra blant andre Wedgwood, Tiffany &amp; Co. og Fabergé. Gjennom samlingen fortelles teens historie på tvers av tid og kultur.</p>
+        </div>
+    </div>
+</section>
+
+<section class="tribute">
+    <div class="tribute-reveal" data-nav-theme="dark">
+        <img class="tribute-reveal-fill" src="{% static 'images/OmOss/BallFlower.png' %}" alt="">
+    </div>
+    <div class="tribute-content" data-nav-theme="light">
+        <div class="tribute-inner">
+            <div class="tribute-text">
+                <h2>Newby Tea</h2>
+                <img class="hero-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+                <p>Newby Tea er en del av N. Sethia Foundation og er kjent for te av høy kvalitet. Merket har mottatt over 120 internasjonale priser for både te og design.</p>
+                <a href="https://www.newbyteas.com/" target="_blank" rel="noopener noreferrer" class="button">Oppdag Newby Tea <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="tribute-photo">
+                <img src="{% static 'images/Kolleksjoner/SølvTe.png' %}" alt="Sølvfarget tekanne og kopp med Newby-teposer på et speilblankt bord på Chitra house" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="essence essence--light" data-nav-theme="light">
+    <div class="essence-photo">
+        <img src="{% static 'images/Kolleksjoner/KoppTe.png' %}" alt="Hvit Newby-tekanne og en kopp nytraktet te på et mørkt bord på Chitra house" loading="lazy" decoding="async">
+    </div>
+    <div class="essence-panel">
+        <h2>Newby Tea</h2>
+        <img class="essence-divider" src="{% static 'images/Guilloche.png' %}" alt="" loading="lazy" decoding="async">
+        <p>På Chitra House Oslo serveres te fra Newby Tea. Slik blir teen en naturlig del av opplevelsen på huset og forbindelsen til Chitra Collections historie og tekultur.</p>
+    </div>
+</section>
+
+{% endblock %}

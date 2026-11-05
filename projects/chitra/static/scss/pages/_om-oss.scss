@@ -1,0 +1,98 @@
+// om-oss.html
+@use '../sections/hero';
+@use '../sections/cta';
+@use '../sections/foundation';
+@use '../sections/fact';
+@use '../sections/essence';
+@use '../sections/tribute';
+@use '../sections/journey';
+@use '../sections/welcome';
+
+// The "Mer enn et hus" callout borrows the polished home variant — squiggle
+// backdrop, drop-shadowed portrait, smaller h2/p — but keeps the shared
+// .foundation's left-aligned panel (home centres it). Scoped to body.om-oss so
+// kolleksjoner's shared .foundation is untouched.
+.om-oss {
+    .foundation {
+        overflow: hidden;
+        padding: 60px 24px 120px;
+
+        .foundation-squiggle {
+            position: absolute;
+            left: -5%;
+            bottom: 24px;
+            width: 110%;
+            height: auto;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .foundation-panel,
+        .foundation-photo {
+            position: relative;
+            z-index: 1;
+        }
+
+        .foundation-photo img {
+            filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.35));
+        }
+    }
+
+    // .journey + .welcome are wrapped in .om-oss-outro so one combined squiggle
+    // (OmOsssquiggle.png) can flow across the seam between them, replacing the
+    // old per-section pair. The wrapper carries the cream ground; the sections
+    // go transparent so the squiggle reads behind both.
+    .om-oss-outro {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        background: var(--cream);
+
+        .journey,
+        .welcome {
+            background: transparent;
+        }
+
+        .om-oss-outro-squiggle {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 1140px) {
+        .foundation {
+            .foundation-squiggle {
+                left: -3%;
+                bottom: 10%;
+                width: 106%;
+            }
+
+            .foundation-panel {
+                h2 {
+                    font-size: 44px;
+                }
+                p {
+                    font-size: 16px;
+                }
+            }
+
+            .foundation-photo img {
+                filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.35));
+            }
+        }
+
+        // The squiggle spans the whole wrapper — the full height of .journey
+        // plus .welcome — sitting behind both. Tune with object-position (which
+        // part of the art to favour) and transform (nudge / scale).
+        .om-oss-outro .om-oss-outro-squiggle {
+            display: block;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    }
+}
