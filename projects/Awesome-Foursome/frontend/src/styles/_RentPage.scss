@@ -1,0 +1,9 @@
+.rent-page {
+    padding: 4rem;
+}
+
+.rent-card-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(280px, 1fr));
+    gap: 2rem;
+}

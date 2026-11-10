@@ -1,0 +1,24 @@
+{
+  "name": "oblig2",
+  "version": "1.0.0",
+  "description": "oblig 2 IDG2100",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node --env-file=.env seed/seed.js",
+    "dev": "node --watch --env-file=.env server.js"
+  },
+  "author": "Marie Klausen",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "eslint": "^10.1.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.1.0",
+    "mongoose": "^9.3.2"
+  }
+}

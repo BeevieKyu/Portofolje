@@ -1,0 +1,12 @@
+{
+  "name": "awesome-foursome",
+  "version": "1.0.0",
+  "description": "HCAI Lab website",
+  "type": "module",
+  "scripts": {
+    "test:e2e": "node tests/e2e/orchestrator.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.42.0"
+  }
+}

@@ -208,7 +208,8 @@
     display: block;
     width: 100%;
     height: 100vh;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .home .photo-layer .overlay-bottom {
@@ -332,7 +333,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     will-change: transform;
   }
   .home .cta {
@@ -356,7 +358,8 @@
     width: 100%;
     height: 100vh;
     filter: brightness(65%);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .home .cta .overlay-bottom {
@@ -432,7 +435,8 @@
     display: block;
     width: 100%;
     aspect-ratio: 522/745;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     clip-path: url("#foundation-arch-clip");
     filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.35));
   }
@@ -460,6 +464,7 @@
   }
   .home .glimpse .glimpse-track {
     display: flex;
+    width: -moz-max-content;
     width: max-content;
     gap: 14px;
     transition: transform 0.7s ease;
@@ -469,7 +474,8 @@
     flex: 0 0 auto;
     display: block;
     aspect-ratio: 512/735;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .home .showcase {
     position: sticky;
@@ -487,7 +493,8 @@
   .home .showcase .showcase-main img {
     display: block;
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     aspect-ratio: 3/2;
   }
   .home .showcase .showcase-secondary img {
@@ -495,7 +502,8 @@
     flex: 1;
     min-width: 0;
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     aspect-ratio: 2/3;
   }
   .home .stairs {
@@ -513,7 +521,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     transform-origin: center center;
     will-change: transform;
   }
@@ -540,7 +549,8 @@
     display: block;
     width: 100%;
     aspect-ratio: 512/735;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .home .stairs .stairs-text h2 {
     font-family: var(--font-serif);
@@ -582,7 +592,8 @@
     width: 100%;
     height: 100vh;
     filter: brightness(65%);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .home .meeting .overlay-bottom {
@@ -751,7 +762,8 @@
     display: block;
     width: 100%;
     height: 100vh;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .home .photo-layer .content {
@@ -864,6 +876,7 @@
     font-weight: 500;
     font-size: 44px;
     line-height: 1.25;
+    min-width: -moz-max-content;
     min-width: max-content;
     margin-bottom: 26px;
   }
@@ -892,7 +905,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     will-change: transform;
   }
   .home .cta {
@@ -926,7 +940,8 @@
     width: 100%;
     height: 100vh;
     filter: brightness(65%);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .home .cta .content {
@@ -1002,7 +1017,8 @@
     display: block;
     width: 100%;
     aspect-ratio: 522/745;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     clip-path: url("#foundation-arch-clip");
     filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.35));
   }
@@ -1041,6 +1057,7 @@
   }
   .home .glimpse .glimpse-track {
     display: flex;
+    width: -moz-max-content;
     width: max-content;
     gap: 40px;
     transition: transform 0.7s ease;
@@ -1050,7 +1067,8 @@
     flex: 0 0 auto;
     display: block;
     aspect-ratio: 512/735;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .home .showcase {
     position: sticky;
@@ -1069,7 +1087,8 @@
   .home .showcase .showcase-main img {
     display: block;
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     aspect-ratio: 3/2;
   }
   .home .showcase .showcase-secondary img {
@@ -1077,7 +1096,8 @@
     flex: 1;
     min-width: 0;
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     aspect-ratio: 2/3;
   }
   .home .stairs {
@@ -1095,7 +1115,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     transform-origin: center center;
     will-change: transform;
   }
@@ -1130,7 +1151,8 @@
     display: block;
     width: 100%;
     aspect-ratio: 512/735;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .home .stairs .stairs-text {
     max-width: 560px;
@@ -1184,7 +1206,8 @@
     width: 100%;
     height: 100vh;
     filter: brightness(65%);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .home .meeting .content {
@@ -1296,7 +1319,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .video-hero-overlay {
@@ -1506,7 +1530,8 @@
     width: 100%;
     height: 100vh;
     filter: brightness(65%);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .meeting .overlay-bottom {
@@ -1576,7 +1601,8 @@
     width: 100%;
     height: 100vh;
     filter: brightness(65%);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     z-index: 9;
   }
   .meeting .content {
@@ -1630,8 +1656,10 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
   pointer-events: none;
   z-index: 0;
 }
@@ -1652,7 +1680,8 @@
   width: 100%;
   height: 100%;
   min-height: 0;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 12px;
 }
 .gather .gather-photo-stack {
@@ -1665,7 +1694,8 @@
   display: block;
   width: 100%;
   aspect-ratio: 1/1;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 12px;
 }
 .gather .gather-panel h2 {
@@ -1702,7 +1732,8 @@
     left: -8%;
     right: auto;
     width: 116%;
-    object-position: left center;
+    -o-object-position: left center;
+       object-position: left center;
   }
   .gather .gather-gallery {
     flex: 0 0 auto;
@@ -1757,7 +1788,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   transform-origin: center center;
   will-change: transform;
 }
@@ -1857,7 +1889,8 @@
   width: 100%;
   height: 100vh;
   filter: brightness(65%);
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 9;
 }
 .cta .overlay-bottom {
@@ -1955,7 +1988,8 @@
   display: block;
   width: 100%;
   aspect-ratio: 522/745;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   clip-path: url("#foundation-arch-clip");
 }
 
@@ -2207,7 +2241,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transform-origin: center center;
   will-change: transform;
 }
@@ -2237,7 +2272,8 @@
   display: block;
   width: 100%;
   height: 100vh;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .tribute .tribute-photo {
   width: min(280px, 82%);
@@ -2247,7 +2283,8 @@
   width: 100%;
   height: auto;
   aspect-ratio: 522/745;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   clip-path: url("#foundation-arch-clip");
 }
 .tribute .tribute-text {
@@ -2411,7 +2448,8 @@
   width: 100%;
   height: auto;
   aspect-ratio: 3/4;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media only screen and (min-width: 1140px) {
@@ -2502,8 +2540,10 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: right center;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: right center;
+       object-position: right center;
     pointer-events: none;
     z-index: 0;
   }
@@ -2517,13 +2557,16 @@
 }
 
 .gallery-grid {
-  column-count: 2;
-  column-gap: 8px;
+  -moz-column-count: 2;
+       column-count: 2;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
   max-width: 1460px;
   margin: 0 auto;
 }
 .gallery-grid.gallery-grid--js {
-  column-count: auto;
+  -moz-column-count: auto;
+       column-count: auto;
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -2539,7 +2582,8 @@
 
 .gallery-item {
   margin: 0 0 8px;
-  break-inside: avoid;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
   overflow: hidden;
 }
 .gallery-item img {
@@ -2553,11 +2597,14 @@
 
 @media only screen and (min-width: 700px) {
   .gallery-grid {
-    column-count: 3;
-    column-gap: 10px;
+    -moz-column-count: 3;
+         column-count: 3;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
   }
   .gallery-grid.gallery-grid--js {
-    column-count: auto;
+    -moz-column-count: auto;
+         column-count: auto;
     gap: 10px;
   }
   .gallery-col {
@@ -2572,11 +2619,14 @@
     padding: 40px var(--page-edge) 96px;
   }
   .gallery-grid {
-    column-count: 4;
-    column-gap: 12px;
+    -moz-column-count: 4;
+         column-count: 4;
+    -moz-column-gap: 12px;
+         column-gap: 12px;
   }
   .gallery-grid.gallery-grid--js {
-    column-count: auto;
+    -moz-column-count: auto;
+         column-count: auto;
     gap: 12px;
   }
   .gallery-col {
@@ -2586,5 +2636,100 @@
     margin-bottom: 12px;
   }
 }
+body:not(.home) .photo-backdrop {
+  position: relative;
+  inset: auto;
+  min-height: 100svh;
+  overflow: hidden;
+}
 
-/*# sourceMappingURL=pages.css.map */
+body:not(.home) .photo-layer {
+  position: relative;
+  inset: auto;
+  min-height: 100svh;
+  opacity: 1;
+  pointer-events: auto;
+  animation: subpage-hero-in 0.9s ease both;
+}
+
+body:not(.home) .photo-layer > img {
+  display: block;
+  width: 100%;
+  height: 100svh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: scale(1.03);
+  animation: subpage-hero-zoom 1.2s ease both;
+}
+
+body:not(.home) .photo-layer > .content {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: var(--cream);
+  text-align: center;
+}
+
+body:not(.home) .essence > img,
+body:not(.home) .gallery > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+body:not(.home) .essence > img {
+  max-height: 70svh;
+  aspect-ratio: 4/5;
+}
+
+body:not(.home) .gallery:not(.gallery-grid) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 12px;
+}
+
+body:not(.home) .gallery-grid > img {
+  margin-bottom: 10px;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+
+body:not(.home) .meeting > img,
+body:not(.home) .tea .tea-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 80svh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@keyframes subpage-hero-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes subpage-hero-zoom {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home) .photo-layer,
+  body:not(.home) .photo-layer > img {
+    animation: none;
+  }
+}/*# sourceMappingURL=pages.css.map */

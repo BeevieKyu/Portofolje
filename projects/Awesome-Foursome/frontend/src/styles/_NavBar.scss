@@ -1,0 +1,281 @@
+.hp-navbar {
+    @include flex-center;
+    padding: 0 2rem;
+    height: 3.5rem;
+    background: $hp-white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 1rem;
+    overflow: visible !important;
+    width: 100%;
+    box-sizing: border-box;
+
+    .hp-logo-container {
+        @include flex-center;
+        gap: 0.5rem;
+        margin-right: auto;
+        flex-shrink: 0;
+
+        .hp-logo {
+            height: 2.75rem;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+    }
+
+    .hp-nav-toggle {
+        display: none;
+        border: 0;
+        background: transparent;
+        color: $hp-text-dark;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .hp-nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex: 1;
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+        overflow: hidden;
+
+        a {
+            text-decoration: none;
+            color: $hp-text-dark;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+
+            &:hover {
+                color: $hp-blue-mid;
+            }
+        }
+    }
+
+    .hp-nav-dropdown {
+        position: relative;
+        flex-shrink: 0;
+
+        .hp-dropdown-toggle {
+            border: none;
+            background: transparent;
+            color: $hp-text-dark;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            white-space: nowrap;
+
+            &:hover {
+                color: $hp-blue-mid;
+            }
+        }
+
+        .hp-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: -50px;
+            background: $hp-white;
+            border: 1px solid $border-light;
+            border-radius: 0.25rem;
+            list-style: none;
+            margin-top: 0.5rem;
+            padding: 0.75rem 0;
+            z-index: 101;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+
+            &.open {
+                display: block;
+            }
+
+            li {
+                margin: 0;
+
+                a {
+                    display: block;
+                    padding: 0.75rem 1.5rem;
+                    color: $hp-text-dark;
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    transition: background 0.2s, color 0.2s;
+
+                    &:hover {
+                        background: $hp-blue-light;
+                        color: $hp-blue-mid;
+                    }
+                }
+            }
+        }
+    }
+
+    .hp-auth-btn {
+        border: 1px solid $hp-blue-mid;
+        background: transparent;
+        color: $hp-blue-mid;
+        text-decoration: none;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        white-space: nowrap;
+
+        &:hover {
+            background: $hp-blue-mid;
+            color: $hp-white;
+        }
+    }
+
+    .hp-user-dropdown {
+        position: relative;
+        flex-shrink: 0;
+
+        .hp-dropdown-toggle {
+            border: 1px solid $hp-blue-mid;
+            background: transparent;
+            color: $hp-blue-mid;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+
+            &:hover {
+                background: $hp-blue-mid;
+                color: $hp-white;
+            }
+        }
+
+        .hp-dropdown-menu {
+            display: none;
+            position: fixed;
+            top: 3.5rem;
+            right: 2rem;
+            background: $hp-white;
+            border: 1px solid $border-light;
+            border-radius: 0.25rem;
+            list-style: none;
+            margin-top: 0;
+            padding: 0.75rem 0;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
+
+            &.open {
+                display: block;
+            }
+
+            li {
+                margin: 0;
+
+                a, button {
+                    display: block;
+                    padding: 0.75rem 1.5rem;
+                    color: $hp-text-dark;
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    transition: background 0.2s, color 0.2s;
+
+                    &:hover {
+                        background: $hp-blue-light;
+                        color: $hp-blue-mid;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 48rem) {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 1rem;
+
+        .hp-nav-toggle {
+            display: block;
+            margin-left: auto;
+        }
+
+        .hp-nav-links {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+
+            &.open {
+                display: flex;
+            }
+        }
+
+        .hp-nav-dropdown {
+            width: 100%;
+
+            .hp-dropdown-toggle {
+                width: 100%;
+                text-align: left;
+                padding: 0.5rem 0;
+            }
+
+            .hp-dropdown-menu {
+                position: static;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                margin: 0;
+                padding: 0.5rem 0 0.5rem 1rem;
+
+                a {
+                    color: $hp-text-dark;
+                }
+            }
+        }
+
+        .hp-user-dropdown {
+            width: 100%;
+
+            .hp-dropdown-toggle {
+                width: 100%;
+                text-align: left;
+                padding: 0.5rem 0;
+                border: none;
+                background: transparent;
+                border-radius: 0;
+                color: $hp-text-dark;
+
+                &:hover {
+                    background: transparent;
+                    color: $hp-blue-mid;
+                }
+            }
+
+            .hp-dropdown-menu {
+                position: static;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                margin: 0;
+                padding: 0.5rem 0 0.5rem 1rem;
+
+                a, button {
+                    color: $hp-text-dark;
+                }
+            }
+        }
+
+        .hp-login-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hp-auth-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    }

@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:6767
+
+### Leaderboard default
+GET {{baseUrl}}/api/leaderboard
+
+### Leaderboard wins
+GET {{baseUrl}}/api/leaderboard?category=wins&page=1&limit=10
+
+### Leaderboard win percentage
+GET {{baseUrl}}/api/leaderboard?category=winPercentage&page=1&limit=10
+
+### Leaderboard matches
+GET {{baseUrl}}/api/leaderboard?category=matches&page=1&limit=10
+
+### Should fail since this is a invalid leaderboard category
+GET {{baseUrl}}/api/leaderboard?category=score
+

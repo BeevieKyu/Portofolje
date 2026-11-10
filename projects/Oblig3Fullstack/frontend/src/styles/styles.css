@@ -1,0 +1,172 @@
+
+.homepage {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  text-align: left;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 5rem;
+  padding: 4rem 2rem;
+}
+
+.intro p {
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin-top: 0.75rem;
+}
+
+
+.create-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 2.4rem;
+  background: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--accent-gold);
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background: var(--accent-gold);
+  color: #fff;
+}
+
+.homepage section {
+  margin-bottom: 3.5rem;
+}
+
+.homepage section h2 {
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-h);
+}
+
+.preview-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.preview-item {
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.preview-item:last-child {
+  border-bottom: none;
+}
+
+.preview-item:hover {
+  background: var(--card-background);
+}
+
+.preview-item a,
+.preview-item button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sans);
+}
+
+.preview-item a > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.watch-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.preview-item a:hover .watch-label {
+  opacity: 0.7;
+}
+
+.preview-item strong {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-h);
+  letter-spacing: 0.02em;
+}
+
+.preview-item p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .homepage {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .intro {
+    margin-bottom: 3rem;
+    padding: 2rem 0.5rem;
+  }
+
+  .create-btn {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage {
+    padding: 1rem 0.5rem 2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+  }
+
+  .preview-item a,
+  .preview-item button {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+  }
+
+  .watch-label {
+    margin-top: 0.4rem;
+  }
+}

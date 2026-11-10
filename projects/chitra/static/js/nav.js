@@ -51,6 +51,57 @@ function menu(){
 }
 
 document.addEventListener('DOMContentLoaded', function(){
+    const pagePrefix = window.location.pathname.includes('/pages/') ? '' : 'pages/';
+    const rootPath = pagePrefix ? 'index.html' : '../index.html';
+    const assetPrefix = pagePrefix ? 'static/' : '../static/';
+    if (!document.getElementById('mobileNav') && document.getElementById('desNav')) {
+        const mobileNav = document.createElement('div');
+        mobileNav.id = 'mobileNav';
+        mobileNav.innerHTML = '<div class="hamburger" id="hamburger" onclick="menu()"><span></span><span></span><span></span></div>'
+            + '<a href="' + rootPath + '" class="logo"><img src="' + assetPrefix + 'images/logo/ChitraLogo.webp" alt="Chitra"></a>'
+            + '<div id="sidebar"><div class="sidebar-links"></div><div class="sidebar-footer"><a href="' + pagePrefix + 'booking.html" class="button">Booking</a></div></div>';
+        document.querySelector('header').insertBefore(mobileNav, document.getElementById('desNav'));
+        const mobileLinks = mobileNav.querySelector('.sidebar-links');
+        [['Om oss', 'om-oss.html'], ['Bryllup', 'bryllup.html'], ['Møter og konferanser', 'moter-og-konferanser.html'], ['Afternoon tea', 'afternoon-tea.html'], ['Privat arrangement', 'privat-arrangement.html'], ['Kolleksjoner', 'kolleksjoner.html'], ['Galleri', 'galleri.html']].forEach(function(page){
+            const link = document.createElement('a');
+            link.className = 'sidebar-link';
+            link.href = pagePrefix + page[1];
+            link.textContent = page[0];
+            mobileLinks.appendChild(link);
+        });
+    }
+    const arrangementPages = [
+        ['Bryllup', 'bryllup.html'],
+        ['Møter og konferanser', 'moter-og-konferanser.html'],
+        ['Afternoon tea', 'afternoon-tea.html'],
+        ['Privat arrangement', 'privat-arrangement.html']
+    ];
+    const desktopLinks = document.querySelector('#desNav .links');
+    if (desktopLinks && !desktopLinks.querySelector('a[href*="afternoon-tea.html"]')) {
+        const menu = document.createElement('details');
+        menu.className = 'nav-dropdown';
+        menu.setAttribute('name', 'nav-menu');
+        menu.innerHTML = '<summary>Arrangementer <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary><div class="nav-dropdown-panel"></div>';
+        const panel = menu.querySelector('.nav-dropdown-panel');
+        arrangementPages.forEach(function(page){
+            const link = document.createElement('a');
+            link.href = pagePrefix + page[1];
+            link.textContent = page[0];
+            panel.appendChild(link);
+        });
+        desktopLinks.insertBefore(menu, desktopLinks.children[1] || null);
+    }
+    const sidebarLinks = document.querySelector('#sidebar .sidebar-links');
+    if (sidebarLinks && !sidebarLinks.querySelector('a[href*="afternoon-tea.html"]')) {
+        arrangementPages.slice(2).forEach(function(page){
+            const link = document.createElement('a');
+            link.className = 'sidebar-link';
+            link.href = pagePrefix + page[1];
+            link.textContent = page[0];
+            sidebarLinks.appendChild(link);
+        });
+    }
+
     document.querySelectorAll('#sidebar .sidebar-link').forEach(function(link){
         link.addEventListener('click', closeMenu);
     });

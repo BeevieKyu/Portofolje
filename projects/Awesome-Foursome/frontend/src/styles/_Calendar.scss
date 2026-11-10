@@ -1,0 +1,177 @@
+.calendar-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+
+    @media (max-width: 600px) {
+        padding: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+        padding: 0.5rem;
+    }
+
+    /* ROOT CONTAINER */
+    .rdp-root {
+        font-family: inherit;
+        color: #222;
+        width: 100%;
+    }
+
+    /* MONTH GRID CONTAINER */
+    .rdp-months {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+
+        @media (max-width: 600px) {
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 480px) {
+            gap: 0.5rem;
+        }
+    }
+
+    /* NAVIGATION (prev/next buttons) */
+    .rdp-nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.5rem;
+        width: 100%;
+
+        @media (max-width: 600px) {
+            padding: 0 0.25rem;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            flex-shrink: 0;
+
+            .rdp-chevron {
+                fill: #333;
+                transition: transform 0.1s ease, fill 0.2s ease;
+                width: 24px;
+                height: 24px;
+
+                @media (max-width: 600px) {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                @media (max-width: 480px) {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+
+            &:hover .rdp-chevron {
+                fill: $hp-blue;
+                transform: scale(1.15);
+            }
+        }
+    }
+
+    /* MONTH CONTAINER */
+    .rdp-month {
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        flex-shrink: 0;
+
+        @media (max-width: 600px) {
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            padding: 0.35rem;
+        }
+    }
+
+    /* DAY GRID (table > tbody > tr > td > button) */
+    .rdp-month table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .rdp-month td {
+        text-align: center;
+        padding: 0.3rem;
+
+        @media (max-width: 600px) {
+            padding: 0.15rem;
+        }
+
+        @media (max-width: 480px) {
+            padding: 0.1rem;
+        }
+    }
+
+    /* THE DAY BUTTON */
+    .rdp-month td button {
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+        font-size: 0.95rem;
+        padding: 0;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+            width: 35px;
+            height: 35px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            width: 28px;
+            height: 28px;
+            font-size: 0.7rem;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 480px) {
+            width: 24px;
+            height: 24px;
+            font-size: 0.6rem;
+            border-radius: 3px;
+        }
+
+        &:hover {
+            background: $hp-white;
+        }
+    }
+
+    /* SELECTED DAY */
+    .rdp-day_selected,
+    button[aria-selected="true"] {
+        background: $hp-blue !important;
+        color: $hp-white !important;
+        border-radius: 6px;
+    }
+
+    /* TODAY */
+    .rdp-day_today {
+        font-weight: bold;
+        border: 1px solid $hp-blue;
+        border-radius: 6px;
+    }
+
+    /* DISABLED DAYS */
+    .rdp-day_disabled button,
+    button[disabled] {
+        color: #ccc !important;
+        cursor: not-allowed;
+    }
+
+}

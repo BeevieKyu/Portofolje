@@ -1,0 +1,153 @@
+@import "variables";
+
+.edit-seminar-page {
+  min-height: 100vh;
+  background: $hp-blue;
+}
+
+.edit-seminar-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.edit-seminar-header {
+  margin-bottom: 2rem;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $hp-white;
+    margin: 0;
+  }
+}
+
+.seminar-form {
+  background: $hp-white;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $hp-blue-mid;
+  }
+}
+
+.seminar-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.seminar-form-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid $hp-blue-light;
+  font-size: 0.9rem;
+  color: $hp-text-dark;
+  background: #f8f9fa;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: 2px solid $hp-blue-mid;
+    background: $hp-white;
+  }
+}
+
+.seminar-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.seminar-form-submit {
+  background: $hp-blue-mid;
+  color: $hp-white;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: darken($hp-blue-mid, 8%);
+  }
+}
+
+.edit-seminar-section {
+  margin-bottom: 2.5rem;
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $hp-white;
+    margin: 0 0 1rem;
+  }
+}
+
+.edit-seminar-empty {
+  color: $hp-blue-light;
+  font-size: 0.9rem;
+}
+
+.edit-seminar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  background: $hp-white;
+  padding: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.edit-seminar-info {
+  flex: 1;
+}
+
+.edit-seminar-desc {
+  font-size: 0.85rem;
+  color: $hp-text-dark;
+  margin: 0 0 0.35rem;
+  line-height: 1.5;
+}
+
+.edit-seminar-meta {
+  font-size: 0.78rem;
+  color: #666;
+  margin: 0;
+}
+
+.edit-seminar-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.seminar-btn {
+  border: none;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seminar-btn-move {
+  background: $hp-blue-light;
+  color: $hp-blue-mid;
+
+  &:hover {
+    background: darken($hp-blue-light, 8%);
+  }
+}
+
+.seminar-btn-delete {
+  background: #fde8e8;
+  color: #c62828;
+
+  &:hover {
+    background: #f8d0d0;
+  }
+}

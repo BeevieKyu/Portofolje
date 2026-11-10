@@ -1,0 +1,113 @@
+/* Shared layout for standalone Chitra subpages. */
+.photo-backdrop {
+    position: relative;
+    inset: auto;
+    min-height: 100svh;
+    overflow: hidden;
+}
+
+.photo-backdrop .photo-layer {
+    position: relative;
+    inset: auto;
+    min-height: 100svh;
+    opacity: 1;
+    pointer-events: auto;
+    animation: subpage-hero-in 900ms ease both;
+}
+
+.photo-backdrop .photo-layer > img {
+    display: block;
+    width: 100%;
+    height: 100svh;
+    object-fit: cover;
+    transform: scale(1.03);
+    animation: subpage-hero-zoom 1200ms ease both;
+}
+
+.photo-backdrop .photo-layer > .content {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: var(--cream);
+    text-align: center;
+}
+
+.photo-backdrop .photo-layer > .content h1,
+.photo-backdrop .photo-layer > .content p {
+    animation: subpage-content-in 800ms 120ms ease both;
+}
+
+.essence .essence-photo,
+.essence .essence-panel {
+    position: relative;
+    z-index: 1;
+}
+
+.essence .essence-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.gallery-item {
+    display: block;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.gallery:not(.gallery-grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 12px;
+}
+
+.gallery:not(.gallery-grid) img {
+    display: block;
+    width: 100%;
+    height: min(62vw, 620px);
+    object-fit: cover;
+}
+
+.meeting > img,
+.tea .tea-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 80svh;
+    object-fit: cover;
+}
+
+@keyframes subpage-hero-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes subpage-hero-zoom {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.03); }
+}
+
+@keyframes subpage-content-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .photo-backdrop .photo-layer,
+    .photo-backdrop .photo-layer > img,
+    .photo-backdrop .photo-layer > .content h1,
+    .photo-backdrop .photo-layer > .content p {
+        animation: none;
+    }
+}

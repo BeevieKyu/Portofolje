@@ -1,0 +1,54 @@
+.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background: $hp-white;
+    box-shadow: 2px 2px 2px rgba(16, 24, 40, 0.1);
+    overflow: hidden;
+
+    &__media {
+        display: block;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: auto;
+        height: 8rem;
+        border-radius: 1rem;
+
+        .info-card__image {
+            display: block;
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    &__title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $hp-text-dark;
+        align-self: stretch;
+        padding-top: 1.5rem;
+    }
+
+    &__description {
+        font-size: 0.95rem;
+        color: $hp-text-dark;
+        align-self: stretch;
+        height: 6rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__actions {
+        padding: 2rem 0;
+        display: flex;
+        gap: 8px;
+    }
+}

@@ -1,0 +1,148 @@
+.rent-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: 0.25s ease-out;
+}
+
+.rent-dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 80%;
+    max-width: 1200px;
+    height: 80vh;
+    max-height: 90vh;
+    padding: 2rem;
+    border-radius: 12px;
+    background: $hp-white;
+    box-shadow: 2px 2px 2px rgba(16, 24, 40, 0.1);
+    animation: scaleIn 0.25s ease-out;
+    overflow: hidden;
+
+    &__close {
+        align-self: flex-end;
+        padding: 0.1rem;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        line-height: 1;
+        color: #333;
+
+        &:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+    }
+
+    &__form {
+        flex: 1;
+        display: flex;
+        // flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        overflow: hidden;
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+            align-items: stretch;
+        }
+
+        &__left,
+        &__right {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 300px;
+            min-width: 0;
+            padding: 1rem;
+            height: 100%;
+
+            @media (max-width: 800px) {
+                height: auto;
+                flex: 0 1 auto;
+                max-width: 100%;
+            }
+        }
+
+        &__left {
+            max-width: 50%;
+            gap: 5%;
+
+            @media (max-width: 800px) {
+                max-width: 100%;
+            }
+
+            &__figure {
+                display: block;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                width: auto;
+                height: 14rem;
+
+                &__img {
+                    display: block;
+                    width: auto;
+                    height: 100%;
+                    margin: 0 auto;
+                    border-radius: 1rem;
+                }
+            }
+        }
+
+        &__right {
+            align-items: center;
+            gap: 2rem;
+
+            @media (max-width: 800px) {
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            &__calendar {
+                width: 100%;
+
+                @media (max-width: 800px) {
+                    width: 100%;
+                }
+            }
+
+            &__actions {
+                padding-top: 3rem;
+            }
+        }
+    }
+
+    &__success {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+        margin: 0 auto;
+
+        &__header {
+            padding: 5rem 0;
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 60ch;
+        }
+
+
+    }
+}

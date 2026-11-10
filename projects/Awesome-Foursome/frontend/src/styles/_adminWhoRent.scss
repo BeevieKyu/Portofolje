@@ -1,0 +1,157 @@
+@import 'variables';
+
+.admin-who-rent-page {
+  padding: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 2rem;
+    color: $hp-white;
+    font-size: 2rem;
+  }
+
+  .loading,
+  .error,
+  .no-data {
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .loading {
+    color: #666;
+    background-color: #f0f0f0;
+  }
+
+  .error {
+    color: $status-danger;
+    background-color: $status-danger-bg;
+  }
+
+  .no-data {
+    color: #666;
+    background-color: #f5f5f5;
+  }
+}
+
+.rentals-container {
+  background: $hp-white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  .rentals-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+
+    thead {
+      background-color: #f5f5f5;
+      font-weight: 600;
+      color: $hp-text-dark;
+
+      th {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 2px solid $border-light;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $border-lighter;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #fafafa;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 1rem;
+        }
+
+        .user-name {
+          font-weight: 500;
+          color: $hp-text-dark;
+        }
+
+        .user-email {
+          color: #666;
+          font-size: 0.9rem;
+        }
+
+        .item-name {
+          font-weight: 500;
+          color: $status-active;
+        }
+
+        .dates {
+          color: #666;
+          font-size: 0.9rem;
+        }
+
+        .created-date {
+          color: #999;
+          font-size: 0.9rem;
+        }
+
+        .status {
+          font-weight: 600;
+          padding: 0.4rem 0.8rem;
+          border-radius: 4px;
+          text-align: center;
+
+          &.active {
+            color: $status-warning;
+            background-color: rgba(255, 193, 7, 0.15);
+          }
+
+          &.returned {
+            color: $status-success;
+            background-color: $status-success-bg;
+          }
+        }
+      }
+    }
+  }
+
+  .total-rentals {
+    padding: 1rem;
+    color: #666;
+    text-align: right;
+    background-color: $hp-white;
+
+    strong {
+      color: $hp-text-dark;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .admin-who-rent-page {
+    padding: 1rem;
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .rentals-container {
+    .rentals-table {
+      font-size: 0.85rem;
+
+      thead th,
+      tbody td {
+        padding: 0.75rem;
+      }
+    }
+  }
+}

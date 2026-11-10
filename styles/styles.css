@@ -7,24 +7,57 @@ html {
 }
 
 body {
+  cursor: none;
   margin: 0;
-  background: #101311;
+  background: #1a1a1a;
   color: #e7e8df;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 16px;
+  font-family: "VT323", monospace;
+  font-size: 20px;
   line-height: 1.5;
 }
 
-body::before {
-  background-image: linear-gradient(rgba(201, 243, 29, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 243, 29, 0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
-  content: "";
-  inset: 0;
+.custom-cursor {
+  background: url("../Images/Cursor.png") center/contain no-repeat;
+  height: 40px;
   pointer-events: none;
   position: fixed;
-  z-index: -1;
+  transform: translate3d(-100px, -100px, 0) rotate(-12deg);
+  transform-origin: 6px 6px;
+  width: 40px;
+  z-index: 9999;
 }
 
+.custom-cursor.is-clicking {
+  transform: translate3d(-100px, -100px, 0) rotate(-12deg) scale(0.9);
+}
+
+a,
+button,
+.button,
+.text-link,
+.contact-link {
+  cursor: none;
+}
+
+input,
+textarea,
+select {
+  cursor: text;
+}
+
+@media (pointer: coarse) {
+  body,
+  a,
+  button,
+  .button,
+  .text-link,
+  .contact-link {
+    cursor: auto;
+  }
+  .custom-cursor {
+    display: none;
+  }
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -46,9 +79,9 @@ a {
 }
 
 .logo {
-  color: #8eab1b;
-  font-family: "DM Mono", monospace;
-  font-size: 1.15rem;
+  color: #da59af;
+  font-family: "VT323", monospace;
+  font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: 0.08em;
 }
@@ -71,8 +104,8 @@ a {
 .project-type,
 .project-number,
 .site-footer {
-  font-family: "DM Mono", monospace;
-  font-size: 0.68rem;
+  font-family: "VT323", monospace;
+  font-size: 0.9rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -84,15 +117,15 @@ a {
 
 .site-nav a:hover,
 .site-footer a:hover {
-  color: #8eab1b;
+  color: #da59af;
 }
 
 .status-pill {
-  color: #8eab1b;
+  color: #da59af;
 }
 
 .status-pill span {
-  background: #8eab1b;
+  background: #da59af;
   border-radius: 50%;
   display: inline-block;
   height: 6px;
@@ -115,7 +148,7 @@ a {
 }
 
 .eyebrow span {
-  color: #8eab1b;
+  color: #da59af;
   margin-right: 18px;
 }
 
@@ -128,7 +161,7 @@ p {
 
 h1,
 h2 {
-  font-size: clamp(3.2rem, 7vw, 7rem);
+  font-size: clamp(2.6rem, 5.2vw, 5.3rem);
   font-weight: 500;
   letter-spacing: -0.06em;
   line-height: 0.94;
@@ -137,23 +170,23 @@ h2 {
 
 h1 em,
 h2 em {
-  color: #8eab1b;
+  color: #da59af;
   font-style: normal;
 }
 
 .hero-intro {
   color: #8d968d;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 38px;
   max-width: 360px;
 }
 
 .button {
-  border: 1px solid #8eab1b;
+  border: 1px solid #da59af;
   display: inline-flex;
-  font-family: "DM Mono", monospace;
-  font-size: 0.72rem;
+  font-family: "VT323", monospace;
+  font-size: 0.88rem;
   gap: 32px;
   padding: 16px 18px;
   text-transform: uppercase;
@@ -161,8 +194,8 @@ h2 em {
 }
 
 .button:hover {
-  background: #8eab1b;
-  color: #101311;
+  background: #da59af;
+  color: #1a1a1a;
 }
 
 .button span,
@@ -173,28 +206,38 @@ h2 em {
 
 .hero-console {
   border: 1px solid rgba(231, 232, 223, 0.18);
-  font-family: "DM Mono", monospace;
+  font-family: "VT323", monospace;
   margin: 0 0 0 4vw;
   max-width: 480px;
   position: relative;
-  transform: rotate(2deg);
+}
+
+.mk-sprite {
+  bottom: 64%;
+  height: auto;
+  max-width: 28vw;
+  pointer-events: none;
+  position: absolute;
+  right: 7%;
+  width: 150px;
+  z-index: 2;
 }
 
 .console-top {
   border-bottom: 1px solid rgba(231, 232, 223, 0.18);
   color: #8d968d;
   display: flex;
-  font-size: 0.65rem;
+  font-size: 0.95rem;
   justify-content: space-between;
   padding: 13px 17px;
 }
 
 .console-dots {
-  color: #8eab1b;
+  color: #da59af;
 }
 
 .console-body {
-  font-size: 0.75rem;
+  font-size: 1.1rem;
   min-height: 250px;
   padding: 28px 25px;
 }
@@ -204,7 +247,7 @@ h2 em {
 }
 
 .prompt {
-  color: #8eab1b;
+  color: #da59af;
   margin-right: 10px;
 }
 
@@ -214,7 +257,7 @@ h2 em {
 }
 
 .cursor {
-  background: #8eab1b;
+  background: #da59af;
   display: inline-block;
   height: 1em;
   margin-left: 4px;
@@ -222,13 +265,27 @@ h2 em {
   width: 7px;
 }
 
+@keyframes cursor-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-static {
+    animation: none;
+  }
+}
 .cursor-static {
+  animation: cursor-blink 0.8s steps(2, start) infinite;
   margin-left: 0;
 }
 
 .console-mark {
   bottom: 20px;
-  color: #8eab1b;
+  color: #da59af;
   font-size: 2rem;
   line-height: 0.8;
   position: absolute;
@@ -238,21 +295,21 @@ h2 em {
 
 .console-mark small {
   color: #8d968d;
-  font-size: 0.45rem;
+  font-size: 0.8rem;
 }
 
 .scroll-note {
   bottom: 35px;
   color: #8d968d;
-  font-family: "DM Mono", monospace;
-  font-size: 0.62rem;
+  font-family: "VT323", monospace;
+  font-size: 0.8rem;
   left: 0;
   position: absolute;
   text-transform: uppercase;
 }
 
 .scroll-note span {
-  border: 1px solid #8eab1b;
+  border: 1px solid #da59af;
   display: inline-block;
   height: 25px;
   margin-right: 10px;
@@ -273,7 +330,7 @@ h2 em {
 }
 
 .section-heading h2 {
-  font-size: clamp(2.8rem, 6vw, 5.6rem);
+  font-size: clamp(2.3rem, 4.8vw, 4.9rem);
   margin-bottom: 0;
 }
 
@@ -291,7 +348,7 @@ h2 em {
 }
 
 .project-number {
-  color: #8eab1b;
+  color: #da59af;
 }
 
 .project-type {
@@ -300,7 +357,7 @@ h2 em {
 }
 
 .project h3 {
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(1.7rem, 3.2vw, 3.2rem);
   font-weight: 500;
   letter-spacing: -0.06em;
   line-height: 0.92;
@@ -308,10 +365,10 @@ h2 em {
 }
 
 .text-link {
-  border-bottom: 1px solid #8eab1b;
-  color: #8eab1b;
-  font-family: "DM Mono", monospace;
-  font-size: 0.7rem;
+  border-bottom: 1px solid #da59af;
+  color: #da59af;
+  font-family: "VT323", monospace;
+  font-size: 0.86rem;
   padding-bottom: 5px;
   text-transform: uppercase;
 }
@@ -335,28 +392,55 @@ h2 em {
 }
 
 .project-art b {
-  color: #8eab1b;
+  color: #da59af;
   font-weight: 600;
 }
 
 .art-chitra {
   background: url("../projects/chitra/static/images/Fasade_08.jpg") center/cover;
   color: #fff;
+  position: relative;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 
+.art-chitra::after {
+  background: rgba(0, 0, 0, 0.42);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.art-chitra span {
+  position: relative;
+  z-index: 1;
+}
+
 .art-signal {
-  background: #27392e;
-  color: #e7e8df;
+  background: url("../Images/SpanishPD.png") center center/cover no-repeat;
+  color: #fff;
+  position: relative;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+}
+
+.art-signal::after {
+  background: rgba(0, 0, 0, 0.42);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.art-signal span {
+  position: relative;
+  z-index: 1;
 }
 
 .art-form {
-  background: #8eab1b;
-  color: #101311;
+  background: #da59af;
+  color: #1a1a1a;
 }
 
 .art-form b {
-  color: #101311;
+  color: #1a1a1a;
 }
 
 .about-section {
@@ -370,7 +454,7 @@ h2 em {
 }
 
 .about-grid h2 {
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: clamp(2.3rem, 4.6vw, 4.6rem);
 }
 
 .about-copy {
@@ -390,10 +474,54 @@ h2 em {
   justify-content: space-between;
   margin-top: 80px;
   padding: 18px 0;
-  color: #8eab1b;
-  font-family: "DM Mono", monospace;
-  font-size: 0.68rem;
+  color: #da59af;
+  font-family: "VT323", monospace;
+  font-size: 0.82rem;
   text-transform: uppercase;
+}
+
+.code-section {
+  padding-top: 40px;
+}
+
+.code-window {
+  border: 1px solid rgba(231, 232, 223, 0.18);
+  font-family: "VT323", monospace;
+  max-width: 760px;
+}
+
+.code-window-top {
+  border-bottom: 1px solid rgba(231, 232, 223, 0.18);
+  color: #8d968d;
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+.code-lines {
+  padding: 18px 22px 22px;
+}
+
+.code-line {
+  align-items: baseline;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 145px 1fr;
+  line-height: 1.5;
+  padding: 5px 0;
+}
+
+.code-language {
+  color: #da59af;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.code-line code {
+  color: #e7e8df;
+  font-family: "VT323", monospace;
+  font-size: 1.05rem;
 }
 
 .contact-section {
@@ -402,19 +530,41 @@ h2 em {
 }
 
 .contact-section h2 {
-  font-size: clamp(3.2rem, 7vw, 7rem);
+  font-size: clamp(2.6rem, 5.8vw, 5.8rem);
 }
 
 .contact-link {
-  border-bottom: 1px solid #8eab1b;
-  color: #8eab1b;
-  font-family: "DM Mono", monospace;
+  border-bottom: 1px solid #da59af;
+  color: #da59af;
+  font-family: "VT323", monospace;
   font-size: clamp(1rem, 2vw, 1.4rem);
   padding-bottom: 10px;
 }
 
 .contact-link span {
   margin-left: 30px;
+}
+
+.social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.social-links a {
+  display: inline-flex;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  opacity: 0.75;
+  transform: translateY(-3px);
+}
+
+.social-links img {
+  display: block;
+  height: 50px;
+  width: 50px;
 }
 
 .site-footer {
@@ -449,7 +599,7 @@ h2 em {
     padding: 85px 0 110px;
   }
   h1 {
-    font-size: clamp(3.2rem, 16vw, 5rem);
+    font-size: clamp(2.3rem, 11vw, 3.6rem);
   }
   .hero-console {
     margin: 75px 0 0 5vw;
@@ -488,6 +638,10 @@ h2 em {
     flex-wrap: wrap;
     gap: 18px;
     justify-content: flex-start;
+  }
+  .code-line {
+    gap: 8px;
+    grid-template-columns: 105px 1fr;
   }
   .site-footer {
     flex-wrap: wrap;

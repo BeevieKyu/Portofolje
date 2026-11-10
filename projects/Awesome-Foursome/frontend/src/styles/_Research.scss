@@ -1,0 +1,300 @@
+.research-main {
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+// --- search bar ---
+.research-search-box {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+
+    .research-search-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+
+        &:focus {
+            border-color: #1a4a8a;
+        }
+    }
+
+    .research-search-btn {
+        padding: 0.75rem 1.5rem;
+        background-color: #1a4a8a;
+        color: #ffffff;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #163d73;
+        }
+    }
+}
+
+// --- keywords ---
+.research-keywords-box {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+
+    .research-keywords-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+        color: #1a1a1a;
+    }
+
+    .research-keywords-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.4rem 0;
+
+        .research-keyword {
+            font-size: 0.88rem;
+            color: #1a4a8a;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// --- results section ---
+.research-results-section {
+    .research-results-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+    }
+
+    .research-results-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}
+
+// --- researcher cards grid ---
+.rc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.rc-card {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+    transition: border-color 0.15s;
+
+    &:hover {
+        border-color: #1a4a8a;
+    }
+}
+
+.rc-photo-wrap {
+    flex-shrink: 0;
+}
+
+.rc-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid #e8eef7;
+}
+
+.rc-photo-fallback {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #1a4a8a;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rc-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.rc-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.rc-title {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
+
+.rc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 0.2rem;
+}
+
+// --- result card ---
+.research-result-card {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    border-left: 4px solid #1a4a8a;
+
+    .research-result-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 0.4rem 0;
+
+        .research-result-title-link {
+            color: #1a56c4;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .research-result-year {
+            font-weight: 400;
+            color: #444;
+        }
+    }
+
+    .research-result-researchers {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 0.25rem 0;
+
+        .research-result-researcher-link {
+            color: #1a1a1a;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                color: #1a56c4;
+            }
+        }
+    }
+
+    .research-result-venue {
+        font-size: 0.85rem;
+        font-style: italic;
+        color: #555;
+        margin: 0;
+    }
+
+    .research-result-body {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+    }
+
+    .research-result-tags {
+        margin-top: 0.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+}
+
+// --- researcher profile page ---
+.researcher-profile {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 2rem;
+    border-left: 4px solid #1a4a8a;
+    max-width: 700px;
+
+    &-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    &-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0 0 0.3rem 0;
+    }
+
+    &-title {
+        font-size: 1rem;
+        color: #555;
+        margin: 0 0 0.3rem 0;
+    }
+
+    &-email {
+        font-size: 0.95rem;
+        margin: 0 0 1rem 0;
+
+        a {
+            color: #1a4a8a;
+        }
+    }
+
+    &-bio {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #333;
+        margin: 0 0 1.5rem 0;
+    }
+
+    &-interests {
+        margin-bottom: 1.5rem;
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+        }
+    }
+
+    &-back {
+        font-size: 0.9rem;
+        color: #1a4a8a;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

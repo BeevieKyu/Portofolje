@@ -1,0 +1,233 @@
+@baseUrl = http://localhost:6767
+@json = application/json
+@adminRole = admin
+@userRole = user
+@runId = {{$timestamp}}
+
+@adminUserId = {{registerAdmin.response.body.user.id}}
+@playerUserId = {{registerPlayer.response.body.user.id}}
+@gameId = {{createPendingGame.response.body.game._id}}
+@gameCommentDeleteId = {{createGameCommentForDelete.response.body.comment._id}}
+@conflictGameId = {{createConflictGame.response.body.game._id}}
+@eloGameId = {{createEloGame.response.body.game._id}}
+
+### Register admin
+# @name registerAdmin
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "gadmin_{{runId}}",
+  "email": "gadmin_{{runId}}@example.com",
+  "password": "admin123",
+  "age": 30
+}
+
+### Register player
+# @name registerPlayer
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "gplayer_{{runId}}",
+  "email": "gplayer_{{runId}}@example.com",
+  "password": "player123",
+  "age": 22
+}
+
+### Queue player, creates pending
+POST {{baseUrl}}/api/games/queue
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "userId": "{{playerUserId}}",
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 }
+}
+
+### Queue admin (matches)
+POST {{baseUrl}}/api/games/queue
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{
+  "userId": "{{adminUserId}}",
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 }
+}
+
+### Create pending game
+# @name createPendingGame
+POST {{baseUrl}}/api/games
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 },
+  "players": [{ "type": "registered", "id": "{{playerUserId}}" }]
+}
+
+### Should fail since anonymous cannot join registered game
+POST {{baseUrl}}/api/games/{{gameId}}/join
+Content-Type: {{json}}
+
+{
+  "player": { "type": "anonymous", "id": "session-guest-1" }
+}
+
+### Join pending game with admin (DO BEFORE saving result!!!!)
+POST {{baseUrl}}/api/games/{{gameId}}/join
+Content-Type: {{json}}
+
+{
+  "player": { "type": "registered", "id": "{{adminUserId}}" }
+}
+
+### Save game result
+POST {{baseUrl}}/api/games/{{gameId}}/result
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "winner": "{{playerUserId}}",
+  "finalScores": { "player1": 15, "player2": 12 },
+  "rolls": [
+    { "round": 1, "playerId": "{{playerUserId}}", "dice": [1, 3, 5, 5, 6] },
+    { "round": 1, "playerId": "{{adminUserId}}", "dice": [2, 2, 4, 4, 6] }
+  ],
+  "holds": [
+    { "round": 1, "playerId": "{{playerUserId}}", "heldIndexes": [2, 3] },
+    { "round": 1, "playerId": "{{adminUserId}}", "heldIndexes": [0, 1] }
+  ]
+}
+
+### Add comment
+POST {{baseUrl}}/api/games/{{gameId}}/comments
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "author": { "type": "registered", "id": "{{playerUserId}}" },
+  "content": "GGs"
+}
+
+### Should fail since anonymous comments not allowed
+POST {{baseUrl}}/api/games/{{gameId}}/comments
+Content-Type: {{json}}
+
+{
+  "author": { "type": "anonymous", "id": "session-guest-2" },
+  "content": "Anonymous spectator comment."
+}
+
+### Create comment for delete
+# @name createGameCommentForDelete
+POST {{baseUrl}}/api/games/{{gameId}}/comments
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "author": { "type": "registered", "id": "{{playerUserId}}" },
+  "content": "Delete me"
+}
+
+### Delete comment (admin)
+DELETE {{baseUrl}}/api/games/{{gameId}}/comments/{{gameCommentDeleteId}}
+x-user-role: {{adminRole}}
+
+### Conflict setup
+# @name createConflictGame
+POST {{baseUrl}}/api/games
+Content-Type: {{json}}
+
+{
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 },
+  "players": [{ "type": "registered", "id": "{{playerUserId}}" }]
+}
+
+### Should fail since the same player joins again
+POST {{baseUrl}}/api/games/{{conflictGameId}}/join
+Content-Type: {{json}}
+
+{
+  "player": { "type": "registered", "id": "{{playerUserId}}" }
+}
+
+### Fill second slot in game
+POST {{baseUrl}}/api/games/{{conflictGameId}}/join
+Content-Type: {{json}}
+
+{
+  "player": { "type": "registered", "id": "{{adminUserId}}" }
+}
+
+### ELO test setup
+# @name createEloGame
+POST {{baseUrl}}/api/games
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 },
+  "players": [{ "type": "registered", "id": "{{playerUserId}}" }]
+}
+
+### Join ELO game with admin
+POST {{baseUrl}}/api/games/{{eloGameId}}/join
+Content-Type: {{json}}
+
+{
+  "player": { "type": "registered", "id": "{{adminUserId}}" }
+}
+
+### Save ELO game result
+POST {{baseUrl}}/api/games/{{eloGameId}}/result
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "winner": "{{playerUserId}}",
+  "finalScores": { "player1": 18, "player2": 12 },
+  "rolls": [
+    { "round": 1, "playerId": "{{playerUserId}}", "dice": [6, 6, 5, 4, 4] },
+    { "round": 1, "playerId": "{{adminUserId}}", "dice": [1, 2, 2, 3, 6] }
+  ],
+  "holds": [
+    { "round": 1, "playerId": "{{playerUserId}}", "heldIndexes": [0, 1] },
+    { "round": 1, "playerId": "{{adminUserId}}", "heldIndexes": [2, 4] }
+  ]
+}
+
+### Anonymous game setup
+# @name createAnonymousGame
+POST {{baseUrl}}/api/games
+Content-Type: {{json}}
+
+{
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 },
+  "players": [{ "type": "anonymous", "id": "anon-a-{{runId}}" }]
+}
+
+### Anonymous join anonymous game
+POST {{baseUrl}}/api/games/{{createAnonymousGame.response.body.game._id}}/join
+Content-Type: {{json}}
+
+{
+  "player": { "type": "anonymous", "id": "anon-b-{{runId}}" }
+}
+
+### Save anonymous game result
+POST {{baseUrl}}/api/games/{{createAnonymousGame.response.body.game._id}}/result
+Content-Type: {{json}}
+
+{
+  "winner": "anon-a-{{runId}}",
+  "finalScores": { "player1": 14, "player2": 11 },
+  "rolls": [
+    { "round": 1, "playerId": "anon-a-{{runId}}", "dice": [5, 5, 4, 3, 2] },
+    { "round": 1, "playerId": "anon-b-{{runId}}", "dice": [6, 2, 2, 1, 1] }
+  ],
+  "holds": [
+    { "round": 1, "playerId": "anon-a-{{runId}}", "heldIndexes": [0, 1] },
+    { "round": 1, "playerId": "anon-b-{{runId}}", "heldIndexes": [1, 2] }
+  ]
+}

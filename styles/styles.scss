@@ -1,10 +1,10 @@
-$ink: #101311;
+$ink: #1a1a1a;
 $paper: #e7e8df;
 $muted: #8d968d;
-$acid: #8eab1b;
+$acid: #da59af;
 $line: rgba(231, 232, 223, .18);
-$mono: 'DM Mono', monospace;
-$display: 'Space Grotesk', sans-serif;
+$mono: 'VT323', monospace;
+$display: 'VT323', monospace;
 
 * {
     box-sizing: border-box;
@@ -15,22 +15,57 @@ html {
 }
 
 body {
+    cursor: none;
     margin: 0;
     background: $ink;
     color: $paper;
     font-family: $display;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5;
 }
 
-body::before {
-    background-image: linear-gradient(rgba(201, 243, 29, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 243, 29, .035) 1px, transparent 1px);
-    background-size: 48px 48px;
-    content: '';
-    inset: 0;
+.custom-cursor {
+    background: url("../Images/Cursor.png") center / contain no-repeat;
+    height: 40px;
     pointer-events: none;
     position: fixed;
-    z-index: -1;
+    transform: translate3d(-100px, -100px, 0) rotate(-12deg);
+    transform-origin: 6px 6px;
+    width: 40px;
+    z-index: 9999;
+}
+
+.custom-cursor.is-clicking {
+    transform: translate3d(-100px, -100px, 0) rotate(-12deg) scale(.9);
+}
+
+a,
+button,
+.button,
+.text-link,
+.contact-link {
+    cursor: none;
+}
+
+input,
+textarea,
+select {
+    cursor: text;
+}
+
+@media (pointer: coarse) {
+    body,
+    a,
+    button,
+    .button,
+    .text-link,
+    .contact-link {
+        cursor: auto;
+    }
+
+    .custom-cursor {
+        display: none;
+    }
 }
 
 a {
@@ -56,7 +91,7 @@ a {
 .logo {
     color: $acid;
     font-family: $mono;
-    font-size: 1.15rem;
+    font-size: 1.6rem;
     font-weight: 500;
     letter-spacing: .08em;
 }
@@ -80,7 +115,7 @@ a {
 .project-number,
 .site-footer {
     font-family: $mono;
-    font-size: .68rem;
+    font-size: .90rem;
     letter-spacing: .08em;
     text-transform: uppercase;
 }
@@ -136,7 +171,7 @@ p {
 
 h1,
 h2 {
-    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-size: clamp(2.6rem, 5.2vw, 5.3rem);
     font-weight: 500;
     letter-spacing: -.06em;
     line-height: .94;
@@ -151,7 +186,7 @@ h2 em {
 
 .hero-intro {
     color: $muted;
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     margin-bottom: 38px;
     max-width: 360px;
@@ -161,7 +196,7 @@ h2 em {
     border: 1px solid $acid;
     display: inline-flex;
     font-family: $mono;
-    font-size: .72rem;
+    font-size: .88rem;
     gap: 32px;
     padding: 16px 18px;
     text-transform: uppercase;
@@ -185,14 +220,24 @@ h2 em {
     margin: 0 0 0 4vw;
     max-width: 480px;
     position: relative;
-    transform: rotate(2deg);
+}
+
+.mk-sprite {
+    bottom: 64%;
+    height: auto;
+    max-width: 28vw;
+    pointer-events: none;
+    position: absolute;
+    right: 7%;
+    width: 150px;
+    z-index: 2;
 }
 
 .console-top {
     border-bottom: 1px solid $line;
     color: $muted;
     display: flex;
-    font-size: .65rem;
+    font-size: .95rem;
     justify-content: space-between;
     padding: 13px 17px;
 }
@@ -202,7 +247,7 @@ h2 em {
 }
 
 .console-body {
-    font-size: .75rem;
+    font-size: 1.1rem;
     min-height: 250px;
     padding: 28px 25px;
 }
@@ -230,7 +275,26 @@ h2 em {
     width: 7px;
 }
 
+@keyframes cursor-blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor-static {
+        animation: none;
+    }
+}
+
 .cursor-static {
+    animation: cursor-blink .8s steps(2, start) infinite;
     margin-left: 0;
 }
 
@@ -246,14 +310,14 @@ h2 em {
 
 .console-mark small {
     color: $muted;
-    font-size: .45rem;
+    font-size: .80rem;
 }
 
 .scroll-note {
     bottom: 35px;
     color: $muted;
     font-family: $mono;
-    font-size: .62rem;
+    font-size: .8rem;
     left: 0;
     position: absolute;
     text-transform: uppercase;
@@ -281,7 +345,7 @@ h2 em {
 }
 
 .section-heading h2 {
-    font-size: clamp(2.8rem, 6vw, 5.6rem);
+    font-size: clamp(2.3rem, 4.8vw, 4.9rem);
     margin-bottom: 0;
 }
 
@@ -308,7 +372,7 @@ h2 em {
 }
 
 .project h3 {
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(1.7rem, 3.2vw, 3.2rem);
     font-weight: 500;
     letter-spacing: -.06em;
     line-height: .92;
@@ -319,7 +383,7 @@ h2 em {
     border-bottom: 1px solid $acid;
     color: $acid;
     font-family: $mono;
-    font-size: .7rem;
+    font-size: .86rem;
     padding-bottom: 5px;
     text-transform: uppercase;
 }
@@ -350,12 +414,39 @@ h2 em {
 .art-chitra {
     background: url("../projects/chitra/static/images/Fasade_08.jpg") center / cover;
     color: #fff;
+    position: relative;
     text-shadow: 0 2px 16px rgba(0, 0, 0, .45);
 }
 
+.art-chitra::after {
+    background: rgba(0, 0, 0, .42);
+    content: '';
+    inset: 0;
+    position: absolute;
+}
+
+.art-chitra span {
+    position: relative;
+    z-index: 1;
+}
+
 .art-signal {
-    background: #27392e;
-    color: $paper;
+    background: url("../Images/SpanishPD.png") center center / cover no-repeat;
+    color: #fff;
+    position: relative;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, .55);
+}
+
+.art-signal::after {
+    background: rgba(0, 0, 0, .42);
+    content: '';
+    inset: 0;
+    position: absolute;
+}
+
+.art-signal span {
+    position: relative;
+    z-index: 1;
 }
 
 .art-form {
@@ -378,7 +469,7 @@ h2 em {
 }
 
 .about-grid h2 {
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: clamp(2.3rem, 4.6vw, 4.6rem);
 }
 
 .about-copy {
@@ -400,8 +491,52 @@ h2 em {
     padding: 18px 0;
     color: $acid;
     font-family: $mono;
-    font-size: .68rem;
+    font-size: .82rem;
     text-transform: uppercase;
+}
+
+.code-section {
+    padding-top: 40px;
+}
+
+.code-window {
+    border: 1px solid $line;
+    font-family: $mono;
+    max-width: 760px;
+}
+
+.code-window-top {
+    border-bottom: 1px solid $line;
+    color: $muted;
+    display: flex;
+    font-size: .9rem;
+    justify-content: space-between;
+    padding: 14px 18px;
+}
+
+.code-lines {
+    padding: 18px 22px 22px;
+}
+
+.code-line {
+    align-items: baseline;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 145px 1fr;
+    line-height: 1.5;
+    padding: 5px 0;
+}
+
+.code-language {
+    color: $acid;
+    font-size: .9rem;
+    text-transform: uppercase;
+}
+
+.code-line code {
+    color: $paper;
+    font-family: $mono;
+    font-size: 1.05rem;
 }
 
 .contact-section {
@@ -410,7 +545,7 @@ h2 em {
 }
 
 .contact-section h2 {
-    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-size: clamp(2.6rem, 5.8vw, 5.8rem);
 }
 
 .contact-link {
@@ -423,6 +558,28 @@ h2 em {
 
 .contact-link span {
     margin-left: 30px;
+}
+
+.social-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.social-links a {
+    display: inline-flex;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.social-links a:hover {
+    opacity: .75;
+    transform: translateY(-3px);
+}
+
+.social-links img {
+    display: block;
+    height: 50px;
+    width: 50px;
 }
 
 .site-footer {
@@ -462,7 +619,7 @@ h2 em {
     }
 
     h1 {
-        font-size: clamp(3.2rem, 16vw, 5rem);
+        font-size: clamp(2.3rem, 11vw, 3.6rem);
     }
 
     .hero-console {
@@ -511,6 +668,11 @@ h2 em {
         flex-wrap: wrap;
         gap: 18px;
         justify-content: flex-start;
+    }
+
+    .code-line {
+        gap: 8px;
+        grid-template-columns: 105px 1fr;
     }
 
     .site-footer {

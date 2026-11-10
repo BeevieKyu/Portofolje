@@ -1,0 +1,7 @@
+@baseUrl = http://localhost:6767
+
+### Health, is server running?
+GET {{baseUrl}}/health
+
+### Platform activity
+GET {{baseUrl}}/api/activity

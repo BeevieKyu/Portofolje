@@ -7,10 +7,12 @@
     <title>MK // Web Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/cursor.js" defer></script>
 </head>
 <body>
+    <div class="custom-cursor" aria-hidden="true"></div>
     <div class="site-shell">
         <header class="site-header">
             <a class="logo" href="index.html" aria-label="MK home"><span>MK</span><i>_</i></a>
@@ -25,18 +27,19 @@
         <main>
             <section class="hero" aria-labelledby="hero-title">
                 <div class="hero-copy">
-                    <p class="eyebrow"><span>01</span> web developer / creative coder</p>
-                    <h1 id="hero-title">Building digital<br><em>things</em> with intent.</h1>
+                    <p class="eyebrow"><span>01</span> Marie Klausen | web developer</p>
+                    <h1 id="hero-title">Building digital<br><em>things</em> with love</h1>
                     <p class="hero-intro">I turn fun ideas into fun projects.</p>
                     <a class="button button-primary" href="#work">see my work :) <span>-></span></a>
                 </div>
                 <div class="hero-console" aria-label="Developer console illustration">
+                    <img class="mk-sprite" src="Images/MkSprite-transparent.png" alt="MK sprite">
                     <div class="console-top"><span>~/portfolio</span><span class="console-dots">_ [] x</span></div>
                     <div class="console-body">
                         <p><span class="prompt">$</span> whoami</p>
-                        <p class="console-output">marie.klausen</p>
+                        <p class="console-output">marie antoinette klausen</p>
                         <p><span class="prompt">$</span> current_focus</p>
-                        <p class="console-output">working on my bachelor :O<span class="cursor"></span></p>
+                        <p class="console-output">working on my bachelor :O</p>
                         <p><span class="prompt">$</span> <span class="cursor cursor-static"></span></p>
                     </div>
                     <span class="console-mark">MK<br><small>001</small></span>
@@ -57,8 +60,8 @@
                     </article>
                     <article class="project">
                         <div class="project-number">02 / 03</div>
-                        <div class="project-content"><p class="project-type">Web app / 2024</p><h3>Signal<br>Archive</h3><a href="#contact" class="text-link">view project <span>-></span></a></div>
-                        <div class="project-art art-signal"><span>signal<br><b>archive</b></span></div>
+                        <div class="project-content"><p class="project-type">Fullstack / 2025</p><h3>Spanich Poker Dice</h3><a href="projects/Oblig3Fullstack/frontend/dist/" class="text-link" target="_blank" rel="noopener noreferrer">view project <span>-></span></a></div>
+                        <div class="project-art art-signal" aria-label="Spanish Poker Dice preview"><span>Spanish Poker<br><b>Dice</b></span></div>
                     </article>
                     <article class="project">
                         <div class="project-number">03 / 03</div>
@@ -71,16 +74,41 @@
             <section class="section about-section" id="about" aria-labelledby="about-title">
                 <p class="eyebrow"><span>03</span> whoami</p>
                 <div class="about-grid">
-                    <h2 id="about-title">Code should feel<br><em>frustrating</em></h2>
-                    <div class="about-copy"><p>Hey! Im Marie, a web developer based in Norway. I love working on complicated and intresting challanges. <br> <br> if i had to pick a favorite quote << Dedicate your hearts>> if you know it, i already like you :). Reach out to me, im a good conversationist.</p></div>
+                    <h2 id="about-title">Code should feel<br><em>f(rusrating)un</em></h2>
+                    <div class="about-copy"><p>Hey! Im Marie, a web developer based in Norway. I love working on complicated and intresting challanges. Im currecly taking a bachelor in webdevelopment at NTNU <br> <br> if i had to pick a favorite quote << Dedicate your hearts>> if you know it, i already like you :). Reach out to me, im a good conversationist.</p></div>
                 </div>
                 <div class="stack-list"><span>FrontEnd</span><span>BackEnd</span><span>Accessibility</span><span>Creative solutions</span></div>
             </section>
 
+            <section class="section code-section" id="code" aria-labelledby="code-title">
+                <div class="section-heading">
+                    <p class="eyebrow"><span>04</span> What do i know?</p>
+                    <h2 id="code-title">I know<br><em>these lanuages</em></h2>
+                </div>
+                <div class="code-window" role="region" aria-label="Code examples for languages I know">
+                    <div class="code-window-top"><span>~/languages</span><span class="console-dots">_ [] x</span></div>
+                    <div class="code-lines">
+                        <div class="code-line"><span class="code-language">HTML</span><code>&lt;p&gt;Hello, world!&lt;/p&gt;</code></div>
+                        <div class="code-line"><span class="code-language">CSS</span><code>content: "Hello, world!";</code></div>
+                        <div class="code-line"><span class="code-language">JavaScript</span><code>console.log("Hello, world!");</code></div>
+                        <div class="code-line"><span class="code-language">React</span><code>return &lt;p&gt;Hello, world!&lt;/p&gt;;</code></div>
+                        <div class="code-line"><span class="code-language">Bash Script</span><code>echo "Hello, world!"</code></div>
+                        <div class="code-line"><span class="code-language">SQL</span><code>SELECT 'Hello, world!';</code></div>
+                        <div class="code-line"><span class="code-language">PHP</span><code>echo "Hello, world!";</code></div>
+                        <div class="code-line"><span class="code-language">Python</span><code>print("Hello, world!")</code></div>
+                        <div class="code-line"><span class="code-language">Node.js</span><code>console.log("Hello, world!");</code></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="contact-section" id="contact" aria-labelledby="contact-title">
-                <p class="eyebrow"><span>04</span> initiate a connection</p>
+                <p class="eyebrow"><span>05</span> initiate a connection</p>
                 <h2 id="contact-title">Like what you have seen?<br><em>Send me a message, cant wait to hear from you!</em></h2>
                 <a class="contact-link" href="mailto:Marie.a.klausen@gmail.com">Marie.a.klausen@gmail.com <span>-></span></a>
+                <div class="social-links" aria-label="Social profiles">
+                    <a href="https://www.linkedin.com/in/marie-antoinette-klausen-5753a42a9/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><img src="Images/LinkedInlogo.png" alt=""></a>
+                    <a href="https://github.com/BeevieKyu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><img src="Images/GithubLogo.png" alt=""></a>
+                </div>
             </section>
         </main>
 

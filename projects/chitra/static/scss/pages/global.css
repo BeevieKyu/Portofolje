@@ -57,6 +57,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  width: -moz-max-content;
   width: max-content;
   padding: 10px 22px;
   border: 2px solid currentColor;
@@ -83,6 +84,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .button {
     padding: 11px 24px;
   }
-}
-
-/*# sourceMappingURL=global.css.map */
+}/*# sourceMappingURL=global.css.map */

@@ -1,0 +1,116 @@
+@import 'variables';
+
+.login-page {
+  min-height: 100vh;
+  background-color: $hp-blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-header {
+  width: 100%;
+}
+
+.login-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  background-color: $hp-blue-light;
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  width: 100%;
+  max-width: 23.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  h1 {
+    font-family: $font-main;
+    font-weight: 800;
+    font-size: 2rem;
+    color: $hp-text-dark;
+    margin: 0;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    box-sizing: border-box;
+
+    label {
+      font-family: $font-main;
+      font-size: 0.95rem;
+      color: $hp-text-dark;
+      margin-top: 1rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: none;
+      border-radius: 0.375rem;
+      background-color: $hp-white;
+      font-family: $font-main;
+      font-size: 0.95rem;
+      color: $hp-text-dark;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: 0.125rem solid $hp-blue;
+      }
+    }
+
+    .login-error {
+      font-family: $font-main;
+      font-size: 0.85rem;
+      color: #c0392b;
+      background: rgba(192, 57, 43, 0.1);
+      border-radius: 0.25rem;
+      padding: 0.4rem 0.6rem;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .forgot-password {
+      font-family: $font-main;
+      font-size: 0.8rem;
+      color: $hp-text-dark;
+      text-align: center;
+      margin-top: 0.4rem;
+      cursor: pointer;
+    }
+
+    button[type='submit'] {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.65rem;
+      background-color: $hp-blue;
+      color: $hp-white;
+      font-family: $font-main;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: $hp-blue-mid;
+      }
+
+      &:active {
+        background-color: $hp-text-dark;
+      }
+    }
+  }
+}

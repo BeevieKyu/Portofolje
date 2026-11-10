@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  --text: #4a3960;
+  --text-h: #251840;
+  --background: #faf8f5;
+  --background-two: #f5f0e8;
+  --border: #ddd5c8;
+  --accent: #dca2ac;
+  --accent-gold: #b8943c;
+  --accent-background: rgba(74, 57, 96, 0.07);
+  --accent-border: rgba(74, 57, 96, 0.2);
+  --hover: rgba(74, 57, 96, 0.05);
+  --shadow: rgba(37, 24, 64, 0.08) 0 12px 32px -8px, rgba(37, 24, 64, 0.04) 0 4px 8px -2px;
+  --card-background: #f5f0e8;
+
+  --sans: 'Jost', system-ui, sans-serif;
+  --heading: 'Cormorant Garamond', Georgia, serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/160% var(--sans);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  color: var(--text);
+  background: var(--background);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+:root.dark-mode {
+  --text: #d0d0d0;
+  --text-h: #f5f5f5;
+  --background: #1a1a1a;
+  --background-two: #2d2d2d;
+  --border: #444;
+  --accent: #dca2ac;
+  --accent-background: rgba(138, 122, 160, 0.1);
+  --accent-border: rgba(138, 122, 160, 0.3);
+  --hover: rgba(138, 122, 160, 0.1);
+  --card-background: #2d2d2d;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin: 40px 0 16px;
+  padding: 0.1em 0.05em;
+
+  @media (max-width: 1024px) {
+    font-size: 44px;
+    margin: 24px 0 12px;
+  }
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  color: var(--text-h);
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--background);
+}
+
+.site-header .logo {
+  text-decoration: none;
+  font-family: var(--heading);
+  font-weight: 500;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--text-h);
+}
+
+.site-header nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.site-header nav a:hover,
+.site-header nav a.active {
+  color: var(--accent);
+}
+
+/* Shared Button Styles */
+.btn-primary {
+  display: inline-block;
+  padding: 0.8rem 2.4rem;
+  background: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--accent-gold);
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-gold);
+  color: #fff;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Secondary Button - Smaller variant */
+.btn-secondary {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  background: transparent;
+  border: 1px solid var(--accent-gold);
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-h);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--accent-gold);
+  color: #fff;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Shared Form Input Styles */
+.form-input-shared {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--background);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--text-h);
+  transition: border-color 0.15s;
+}
+
+.form-input-shared::placeholder {
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.form-input-shared:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Shared Page Container */
+.page-container {
+  max-width: 100%;
+  padding: 2rem 2rem 4rem;
+  text-align: left;
+}
+
+.page-container-narrow {
+  max-width: 560px;
+}
+
+.page-container-regular {
+  max-width: 860px;
+}
+
+.page-container-wide {
+  max-width: 1060px;
+}
+
+.header-greeting {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.greeting-user {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--text-h);
+  transition: opacity 0.15s;
+}
+
+.greeting-user:hover { opacity: 0.75; }
+
+.greeting-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent-background);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-family: var(--heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.greeting-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.greeting-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-h);
+}
+
+.greeting-logout {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.greeting-logout:hover { color: var(--accent); }
+
+.greeting-auth-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.15s;
+}
+
+.greeting-auth-link:hover { color: var(--accent); }
+
+.greeting-register {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--accent-gold);
+  border-radius: 2px;
+  color: var(--text-h);
+  transition: background 0.2s, color 0.2s;
+}
+
+.greeting-register:hover {
+  background: var(--accent-gold);
+  color: #fff;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  margin-top: auto;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-footer a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.site-footer a:hover {
+  color: var(--accent-gold);
+}
+
+@media (max-width: 1024px) {
+  .site-header {
+    padding: 1rem 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .site-header nav {
+    gap: 1.25rem;
+  }
+
+  .site-footer {
+    padding: 1.5rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .page-container {
+    padding: 1.5rem 1.25rem 3rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .site-header {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-header .logo {
+    font-size: 1.15rem;
+  }
+
+  .site-header nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem 1rem;
+    padding-top: 0.2rem;
+  }
+
+  .site-header nav a {
+    font-size: 0.74rem;
+    letter-spacing: 0.11em;
+  }
+
+  .header-greeting {
+    gap: 0.6rem;
+  }
+
+  .greeting-name {
+    font-size: 0.78rem;
+  }
+
+  .greeting-logout,
+  .greeting-auth-link {
+    font-size: 0.72rem;
+  }
+
+  .appearance-toggle {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .site-footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 34px;
+    margin: 16px 0 8px;
+  }
+
+  h2 {
+    font-size: 18px;
+    letter-spacing: 0.04em;
+  }
+
+  .site-header {
+    padding: 0.85rem 0.75rem;
+  }
+
+  .site-header .logo {
+    font-size: 1rem;
+  }
+
+  .site-header nav {
+    gap: 0.5rem 0.75rem;
+  }
+
+  .header-greeting {
+    width: 100%;
+    justify-content: center;
+    order: 4;
+  }
+
+  .appearance-menu {
+    right: -0.25rem;
+    min-width: 240px;
+    max-width: calc(100vw - 1.2rem);
+  }
+
+  .page-container {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .site-footer {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 1.25rem 0.75rem;
+  }
+}

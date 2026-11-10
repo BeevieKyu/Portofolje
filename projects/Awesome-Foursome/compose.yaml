@@ -1,0 +1,77 @@
+services:
+  db:
+    image: mongo:8.0
+    container_name: awesome-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER:-mongouser}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD:-mongopass}
+      MONGO_INITDB_DATABASE: ${DB_NAME:-hcai-app}
+    ports:
+      - "27018:27017"
+    volumes:
+      - db_data:/data/db
+    networks:
+      - awesome-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  backend:
+    container_name: backend.app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: back.app
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-2169}:${PORT:-2169}"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${PORT:-2169}
+      DB_HOSTNAME: db
+      DB_PORT: 27017
+      DB_NAME: ${DB_NAME:-hcai-app}
+      DB_USER: ${DB_USER:-mongouser}
+      DB_PASSWORD: ${DB_PASSWORD:-mongopass}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:9001}
+      NEWSAPI_KEY: ${NEWSAPI_KEY:-7f7cea007379411eb35788e3a28f7992}
+      APP_SALT: ${APP_SALT:-thisisaverylongstringcanbeanythingreallybutjustwanttosaythisassignmnetisgonnabetheendofme}
+      JWT_SECRET: ${JWT_SECRET:-changethissecretinproductionmakeitlongandrandom}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - awesome-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    container_name: frontend.app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    image: front.app
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-9001}:5173"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:2169}
+    depends_on:
+      - backend
+    networks:
+      - awesome-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+networks:
+  awesome-network:
+
+volumes:
+  db_data:

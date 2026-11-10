@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'global';
+
+// SHARED COMPONENTS
+@import 'tables';
+
+// PAGES
+@import 'home';
+@import 'RentPage';
+@import 'login';
+@import 'DataCard';
+@import 'admin-home';
+@import 'adminWhoRent';
+@import 'inventoryAdmin';
+@import 'Research';
+@import 'ResearcherPage';
+@import 'CurrentSeminars';
+@import 'EditSeminar';
+@import 'ScreenPage';
+@import 'ProfilePage';
+
+// COMPONENTS
+@import 'InfoCard';
+@import 'Footer';
+@import 'RentDialog';
+@import 'NavBar';
+
+// COMPONENTS / UI
+@import 'ButtonLight';
+@import 'Calendar';
+@import 'News';
+

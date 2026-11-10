@@ -1,0 +1,64 @@
+services:
+  db:
+    image: iselinch/idg2671_26_db
+    container_name: awesome-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER:-mongouser}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD:-mongopass}
+      MONGO_INITDB_DATABASE: ${DB_NAME:-hcai-app}
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/team3/app/DB:/app/DB
+    networks:
+      - awesome-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    container_name: backend.app
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    image: iselinch/idg2671_26_back
+    ports:
+      - "6103:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 5000
+      DB_HOSTNAME: db
+      DB_PORT: 27017
+      DB_NAME: ${DB_NAME:-hcai-app}
+    networks:
+      - awesome-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    container_name: frontend.app
+    # build:
+    #   context: ./frontend
+    #   dockerfile: Dockerfile.frontend
+    image: iselinch/idg2671_webproject_frontend
+    ports:
+      - "6003:5173"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://backend:5000
+    networks:
+      - awesome-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+networks:
+  awesome-network:
+ 

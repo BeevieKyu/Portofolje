@@ -1,0 +1,204 @@
+@baseUrl = http://localhost:6767
+@json = application/json
+@adminRole = admin
+@userRole = user
+@runId = {{$timestamp}}
+
+@adminUserId = {{registerAdmin.response.body.user.id}}
+@playerUserId = {{registerPlayer.response.body.user.id}}
+@tournamentId = {{createTournament.response.body.tournament._id}}
+@tournamentCommentId = {{createTournamentComment.response.body.comment._id}}
+@playerTwoUserId = {{registerPlayerTwo.response.body.user.id}}
+@playerThreeUserId = {{registerPlayerThree.response.body.user.id}}
+@tournamentFourId = {{createTournamentFour.response.body.tournament._id}}
+@round1Match0WinnerId = {{startTournamentFour.response.body.tournament.bracket[0].matches[0].player1}}
+@round1Match1WinnerId = {{startTournamentFour.response.body.tournament.bracket[0].matches[1].player1}}
+@round2WinnerId = {{reportRound1Match1.response.body.tournament.bracket[1].matches[0].player1}}
+
+### Register admin
+# @name registerAdmin
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "tadmin_{{runId}}",
+  "email": "tadmin_{{runId}}@example.com",
+  "password": "admin123",
+  "age": 30
+}
+
+### Register player
+# @name registerPlayer
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "tplayer_{{runId}}",
+  "email": "tplayer_{{runId}}@example.com",
+  "password": "player123",
+  "age": 22
+}
+
+### Create tournament
+# @name createTournament
+POST {{baseUrl}}/api/tournaments
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{
+  "title": "World Championship",
+  "description": "Single elimination warmup tournament.",
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 },
+  "startDate": "2026-12-01T10:00:00.000Z",
+  "maxParticipants": 8,
+  "trophy": {
+    "title": "Spring Champion",
+    "imageUrl": "https://example.com/trophy.png"
+  },
+  "createdBy": "{{adminUserId}}"
+}
+
+### Join tournament as player
+POST {{baseUrl}}/api/tournaments/{{tournamentId}}/join
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "userId": "{{playerUserId}}" }
+
+### Join tournament as admin
+POST {{baseUrl}}/api/tournaments/{{tournamentId}}/join
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{ "userId": "{{adminUserId}}" }
+
+### Start tournament
+POST {{baseUrl}}/api/tournaments/{{tournamentId}}/start
+x-user-role: {{adminRole}}
+
+### Report final result (2-player bracket)
+POST {{baseUrl}}/api/tournaments/{{tournamentId}}/rounds/1/matches/0/result
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "winnerId": "{{playerUserId}}" }
+
+### Verify winner profile
+GET {{baseUrl}}/api/users/{{playerUserId}}
+x-user-role: {{userRole}}
+
+### Add tournament comment
+# @name createTournamentComment
+POST {{baseUrl}}/api/tournaments/{{tournamentId}}/comments
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "author": { "type": "registered", "id": "{{playerUserId}}" },
+  "content": "GG EZ! Looking forward to the next one."
+}
+
+### Delete tournament comment
+DELETE {{baseUrl}}/api/tournaments/{{tournamentId}}/comments/{{tournamentCommentId}}
+x-user-role: {{adminRole}}
+
+### Register extra players for 4-player tournament
+# @name registerPlayerTwo
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "player-two-{{runId}}",
+  "email": "player-two-{{runId}}@example.com",
+  "password": "player234",
+  "age": 24
+}
+
+###
+# @name registerPlayerThree
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "player-three-{{runId}}",
+  "email": "player-three-{{runId}}@example.com",
+  "password": "player345",
+  "age": 25
+}
+
+### Create 4-player tournament
+# @name createTournamentFour
+POST {{baseUrl}}/api/tournaments
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{
+  "title": "Spring Cup 4P",
+  "description": "4-player bracket auto-advance test.",
+  "variant": { "rounds": 3, "straightsAllowed": true, "timePerRound": 5 },
+  "startDate": "2026-12-02T10:00:00.000Z",
+  "maxParticipants": 8,
+  "trophy": {
+    "title": "4P Champion",
+    "imageUrl": "https://example.com/trophy-4p.png"
+  },
+  "createdBy": "{{adminUserId}}"
+}
+
+### Join all four players
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/join
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "userId": "{{playerUserId}}" }
+
+###
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/join
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{ "userId": "{{adminUserId}}" }
+
+###
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/join
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "userId": "{{playerTwoUserId}}" }
+
+###
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/join
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "userId": "{{playerThreeUserId}}" }
+
+###
+# @name startTournamentFour
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/start
+x-user-role: {{adminRole}}
+
+### Round 1 match 0
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/rounds/1/matches/0/result
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "winnerId": "{{round1Match0WinnerId}}" }
+
+### Round 1 match 1
+# @name reportRound1Match1
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/rounds/1/matches/1/result
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "winnerId": "{{round1Match1WinnerId}}" }
+
+### Round 2 final
+POST {{baseUrl}}/api/tournaments/{{tournamentFourId}}/rounds/2/matches/0/result
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{ "winnerId": "{{round2WinnerId}}" }
+
+### Verify completed
+GET {{baseUrl}}/api/tournaments/{{tournamentFourId}}

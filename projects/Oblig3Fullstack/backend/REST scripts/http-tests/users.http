@@ -1,0 +1,130 @@
+@baseUrl = http://localhost:6767
+@json = application/json
+@adminRole = admin
+@userRole = user
+@runId = {{$timestamp}}
+
+@adminUserId = {{registerAdmin.response.body.user.id}}
+@playerUserId = {{registerPlayer.response.body.user.id}}
+
+### Register admin
+# @name registerAdmin
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "admin_{{runId}}",
+  "email": "admin_{{runId}}@example.com",
+  "password": "admin123",
+  "age": 30
+}
+
+### Register player
+# @name registerPlayer
+POST {{baseUrl}}/api/users/register
+Content-Type: {{json}}
+
+{
+  "username": "player_{{runId}}",
+  "email": "player_{{runId}}@example.com",
+  "password": "player123",
+  "age": 22
+}
+
+### Login admin
+POST {{baseUrl}}/api/users/login
+Content-Type: {{json}}
+
+{
+  "email": "{{registerAdmin.response.body.user.email}}",
+  "password": "admin123"
+}
+
+### Login player
+POST {{baseUrl}}/api/users/login
+Content-Type: {{json}}
+
+{
+  "email": "{{registerPlayer.response.body.user.email}}",
+  "password": "player123"
+}
+
+### Login seed admin ( first run: npm run seed)
+POST {{baseUrl}}/api/users/login
+Content-Type: {{json}}
+
+{
+  "email": "admin@poker.test",
+  "password": "admin123"
+}
+
+### Login seed player ( first run: npm run seed)
+POST {{baseUrl}}/api/users/login
+Content-Type: {{json}}
+
+{
+  "email": "player1@poker.test",
+  "password": "password123"
+}
+
+### Protected route
+GET {{baseUrl}}/api/users/protected
+x-user-role: {{userRole}}
+
+### Get player profile
+GET {{baseUrl}}/api/users/{{playerUserId}}
+x-user-role: {{userRole}}
+
+### Update player email and age
+PATCH {{baseUrl}}/api/users/{{playerUserId}}
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "email": "player_updated_{{runId}}@example.com",
+  "age": 23
+}
+
+### Update player password
+PATCH {{baseUrl}}/api/users/{{playerUserId}}
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "password": "newpassword456"
+}
+
+### Should fail since username cant be updated
+PATCH {{baseUrl}}/api/users/{{playerUserId}}
+Content-Type: {{json}}
+x-user-role: {{userRole}}
+
+{
+  "username": "hacker"
+}
+
+### Admin list users
+GET {{baseUrl}}/api/users?page=1&limit=10&q=player
+x-user-role: {{adminRole}}
+
+### Admin view all comments
+GET {{baseUrl}}/api/comments?source=all&sort=-createdAt&page=1&limit=10
+x-user-role: {{adminRole}}
+
+### Admin ban user
+PATCH {{baseUrl}}/api/users/{{playerUserId}}/ban
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{
+  "isBanned": true
+}
+
+### Admin unban user
+PATCH {{baseUrl}}/api/users/{{playerUserId}}/ban
+Content-Type: {{json}}
+x-user-role: {{adminRole}}
+
+{
+  "isBanned": false
+}
