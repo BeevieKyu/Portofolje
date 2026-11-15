@@ -12,6 +12,7 @@
     <script src="scripts/cursor.js" defer></script>
 </head>
 <body>
+    <!-- hire me plz :) -->
     <div class="custom-cursor" aria-hidden="true"></div>
     <div class="site-shell">
         <header class="site-header">
@@ -28,7 +29,7 @@
             <section class="hero" aria-labelledby="hero-title">
                 <div class="hero-copy">
                     <p class="eyebrow"><span>01</span> Marie Klausen | web developer</p>
-                    <h1 id="hero-title">Building digital<br><em>things</em> with love</h1>
+                    <h1 id="hero-title">Building digital<br>things with <em>love</em></h1>
                     <p class="hero-intro">I turn fun ideas into fun projects.</p>
                     <a class="button button-primary" href="#work">see my work :) <span>-></span></a>
                 </div>
@@ -36,11 +37,16 @@
                     <img class="mk-sprite" src="Images/MkSprite-transparent.png" alt="MK sprite">
                     <div class="console-top"><span>~/portfolio</span><span class="console-dots">_ [] x</span></div>
                     <div class="console-body">
-                        <p><span class="prompt">$</span> whoami</p>
-                        <p class="console-output">marie antoinette klausen</p>
-                        <p><span class="prompt">$</span> current_focus</p>
-                        <p class="console-output">working on my bachelor :O</p>
-                        <p><span class="prompt">$</span> <span class="cursor cursor-static"></span></p>
+                        <div class="terminal-history" id="terminal-history" aria-live="polite">
+                            <p><span class="prompt">$</span> whoami</p>
+                            <p class="console-output">marie antoinette klausen</p>
+                            <p><span class="prompt">$</span> current_focus</p>
+                            <p class="console-output">working on my bachelor :O</p>
+                        </div>
+                        <form class="terminal-form" id="terminal-form">
+                            <label class="prompt" for="terminal-input">$</label>
+                            <input id="terminal-input" class="terminal-input" type="text" autocomplete="off" spellcheck="false" placeholder="type a command... or use 'help'" aria-label="Terminal command">
+                        </form>
                     </div>
                     <span class="console-mark">MK<br><small>001</small></span>
                 </div>
@@ -112,7 +118,7 @@
             </section>
         </main>
 
-        <footer class="site-footer"><span>MK // 2024—2027</span><span>built with love</span><a href="#hero-title">back to top ^</a></footer>
+        <footer class="site-footer"><span>MK // 2024—<span id="current-year"></span></span><span>built with love</span><a href="#hero-title">back to top ^</a></footer>
     </div>
 </body>
 </html>
